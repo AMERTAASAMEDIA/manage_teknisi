@@ -2,6 +2,7 @@ import { h, resolveComponent } from 'vue'
 import { createRouter, createWebHashHistory } from 'vue-router'
 
 import DefaultLayout from '@/layouts/DefaultLayout'
+import store from '../store'
 
 const routes = [
   {
@@ -9,6 +10,10 @@ const routes = [
     name: 'Home',
     component: DefaultLayout,
     redirect: '/dashboard',
+    meta: {
+      requiresAuth: true,
+      roles: ['LOGISTIK'],
+    },
     children: [
       {
         path: '/dashboard',
@@ -17,10 +22,176 @@ const routes = [
         // this generates a separate chunk (about.[hash].js) for this route
         // which is lazy-loaded when the route is visited.
         component: () =>
+          import(/* webpackChunkName: "dashboard" */ '@/views/dashboard/Dashboard.vue'),
+      },
+      // Amerta Logistik On progress
+      {
+        path: '/item',
+        name: 'Item',
+        component: () => import('@/views/Amerta_logistik/item/data_item.vue'),
+        // redirect: '/item',
+      },
+      {
+        path: '/kabel',
+        name: 'Kabel',
+        component: () => import('@/views/Amerta_logistik/item/data_item_meter.vue'),
+      },
+      {
+        path: '/item_pcs',
+        name: 'ItemPcs',
+        component: () => import('@/views/Amerta_logistik/item/data_item_pcs.vue'),
+      },
+      {
+        path: '/input_kabel/:id',
+        name: 'InputKabel',
+        component: () => import('@/views/Amerta_logistik/item/create_input_kabel.vue'),
+      },
+      {
+        path: '/alokasi_barang/:id',
+        name: 'AlokasiBarang',
+        component: () => import('@/views/Amerta_logistik/alokasi_barang/tambah_alokasi_barang.vue'),
+      },
+      {
+        path: '/history_pembelian/:id',
+        name: 'HistoryPembelian',
+        component: () => import('@/views/Amerta_logistik/item/History/history_pembelian.vue'),
+      },
+      {
+        path: '/history_pemakaian/:id',
+        name: 'HistoryPemakaian',
+        component: () => import('@/views/Amerta_logistik/item/History/history_pemakaian.vue'),
+      },
+      {
+        path: '/history_pemakaian_list/:id',
+        name: 'HistoryPemakaianList',
+        component: () => import('@/views/Amerta_logistik/item/History/history_pemakaian_list.vue'),
+      },
+      {
+        path: '/history_penjualan/:id',
+        name: 'HistoryPenjualan',
+        component: () => import('@/views/Amerta_logistik/item/History/history_penjualan.vue'),
+      },
+      {
+        path: '/list_satuan_barang/:name',
+        name: 'ListSatuanBarang',
+        component: () => import('@/views/Amerta_logistik/item/History/list_satuan_barang.vue'),
+      },
+      {
+        path: '/input_kode_sn/:id',
+        name: 'InputKodeSn',
+        component: () => import('@/views/Amerta_logistik/item/History/input_kode_sn.vue'),
+      },
+      {
+        path: '/supplier',
+        name: 'Supplier',
+        component: () => import('@/views/Amerta_logistik/supplier/data_supplier.vue'),
+        // redirect: '/item',
+      },
+      {
+        path: '/edit-supplier/:id',
+        name: 'EditSupplier',
+        component: () => import('@/views/Amerta_logistik/supplier/edit_supplier.vue'),
+        // redirect: '/item',
+      },
+      {
+        path: '/list_material',
+        name: 'ListMaterial',
+        component: () =>
+          import('@/views/Amerta_logistik/list_harga_material/list_harga_material.vue'),
+      },
+      {
+        path: '/tambah_list_material',
+        name: 'TambahListMaterial',
+        component: () =>
+          import('@/views/Amerta_logistik/list_harga_material/tambah_list_harga_material.vue'),
+      },
+      {
+        path: '/edit_list_material/:id',
+        name: 'EditListMaterial',
+        component: () =>
+          import('@/views/Amerta_logistik/list_harga_material/edit_list_harga_material.vue'),
+      },
+      {
+        path: '/list_pengadaan',
+        name: 'ListPengadaan',
+        component: () => import('@/views/Amerta_logistik/pengadaan/data_pengadaan.vue'),
+      },
+      {
+        path: '/transaksi_logistik',
+        name: 'TransaksiLogistik',
+        component: () =>
+          import('@/views/Amerta_logistik/transaksi_logistik/transaksi_logistik.vue'),
+      },
+      {
+        path: '/detail_transaksi_logistik/:id',
+        name: 'DetailTransaksiLogistik',
+        component: () => import('@/views/Amerta_logistik/transaksi_logistik/detail_logistik.vue'),
+      },
+      {
+        path: '/tambah_transaksi_logistik',
+        name: 'TambahTransaksiLogistik',
+        component: () => import('@/views/Amerta_logistik/transaksi_logistik/tambah_logistik.vue'),
+      },
+      {
+        path: '/update_transaksi_qc/:id',
+        name: 'UpdateTransaksiQc',
+        component: () => import('@/views/Amerta_logistik/qc/Tr_qc.vue'),
+      },
+      {
+        path: '/list_transaksi_qc',
+        name: 'ListTransaksiQc',
+        component: () => import('@/views/Amerta_logistik/qc/list_qc.vue'),
+      },
+      {
+        path: '/list_transaksi_pengeluaran',
+        name: 'ListTransaksiPengeluaran',
+        component: () => import('@/views/Amerta_logistik/alokasi_barang/table_alokasi_barang.vue'),
+      },
+      // Kumpulan laporan
+      {
+        path: '/laporan_keluar_masuk',
+        name: 'LaporanKeluarMasuk',
+        component: () =>
+          import('@/views/Amerta_logistik/Laporan/Laporan_keluar_masuk/laporan_keluar_masuk.vue'),
+      },
+      {
+        path: '/laporan_pemakaian_kabel',
+        name: 'LaporanPemakaianKabel',
+        component: () =>
           import(
-            /* webpackChunkName: "dashboard" */ '@/views/dashboard/Dashboard.vue'
+            '@/views/Amerta_logistik/Laporan/laporan_pemakaian_kabel/laporan_pemakaian_kabel.vue'
           ),
       },
+      {
+        path: '/laporan_pemakaian_kabel_bulanan',
+        name: 'LaporanPemakaianKabelBulanan',
+        component: () =>
+          import(
+            '@/views/Amerta_logistik/Laporan/laporan_pemakaian_kabel/laporan_pemakaian_kabel_bulanan.vue'
+          ),
+      },
+      {
+        path: '/laporan_pemakaian_alat',
+        name: 'LaporanPemakaianAlat',
+        component: () =>
+          import(
+            '@/views/Amerta_logistik/Laporan/laporan_pemakaian_alat/laporan_pemakaian_alat.vue'
+          ),
+      },
+      {
+        path: '/laporan_pemakaian_alat_bulanan',
+        name: 'LaporanPemakaianAlatBulanan',
+        component: () =>
+          import(
+            '@/views/Amerta_logistik/Laporan/laporan_pemakaian_alat/laporan_pemakaian_alat_bulanan.vue'
+          ),
+      },
+      {
+        path: '/laporan_aset',
+        name: 'LaporanAset',
+        component: () => import('@/views/Amerta_logistik/Laporan/Laporan_aset/laporan_aset.vue'),
+      },
+      // ----
       {
         path: '/theme',
         name: 'Theme',
@@ -309,6 +480,24 @@ const router = createRouter({
     // always scroll to top
     return { top: 0 }
   },
+})
+
+router.beforeEach((to, from, next) => {
+  const { requiresAuth, roles } = to.meta
+  const isAuthenticated = store.getters.isAuthenticated
+  const userRole = store.getters.Auth_role
+
+  if (requiresAuth) {
+    if (!isAuthenticated) {
+      next({ name: 'Login' })
+    } else if (roles && !roles.includes(userRole)) {
+      next({ name: 'Dashboard' })
+    } else {
+      next()
+    }
+  } else {
+    next()
+  }
 })
 
 export default router
