@@ -38,7 +38,7 @@ export default {
       })
     },
     getdata() {
-      Axios.get(allSource.getDataItem).then((response) => {
+      Axios.get(allSource.getDataItem + this.$store.getters.Auth_domain).then((response) => {
         this.list_item = response.data
         console.log(response.data)
         // console.log(response.data)

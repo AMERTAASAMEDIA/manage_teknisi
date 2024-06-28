@@ -72,7 +72,7 @@ export default {
     },
     getdata() {
       // let randomdata = [];
-      Axios.get(allSource.getDataListItem).then((response) => {
+      Axios.get(allSource.getDataListItem + this.$store.getters.Auth_domain).then((response) => {
         this.list_item = response.data
         console.log(response.data)
       })

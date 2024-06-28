@@ -90,7 +90,7 @@ export default {
             return amount.toLocaleString('id-ID', { style: 'currency', currency: 'IDR', minimumFractionDigits: 0 });
         },
         getdata() {
-            Axios.get(allSource.getDataItemBySatuanPCS).then((response) => {
+            Axios.get(allSource.getDataItemBySatuanPCS + this.$store.getters.Auth_domain + "/PCS").then((response) => {
                 this.list_item = response.data;
                 // console.log(response.data)
             })

@@ -35,7 +35,7 @@ export default {
         // ----
         // LIST DATA 
         getdata() {
-            Axios.get(allSource.getDataTransaksiLogistik).then((response) => {
+            Axios.get(allSource.getDataTransaksiLogistik + this.$store.getters.Auth_domain).then((response) => {
                 this.list_item = response.data;
             })
         },
@@ -76,7 +76,7 @@ export default {
                                             let newData = {
                                                 item_nama: response.data.Tr_logistic_detail[index].Tr_detail_logistic_nama_barang,
                                                 item_stok: response.data.Tr_logistic_detail[index].Tr_detail_logistic_jumlah_barang,
-                                                item_domain: "AMERTA-PASURUAN",
+                                                item_domain: this.$store.getters.Auth_domain,
                                                 item_harga: response.data.Tr_logistic_detail[index].Tr_detail_logistic_harga_barang,
                                                 item_created: new Date().toISOString().slice(0, 10),
                                                 item_updated: new Date().toISOString().slice(0, 10),

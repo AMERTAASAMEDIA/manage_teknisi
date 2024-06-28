@@ -108,7 +108,7 @@ export default {
                 master_pengadaan_barang_nama: this.data.master_pengadaan_barang_nama,
                 master_pengadaan_barang_pic: this.data.master_pengadaan_barang_pic,
                 master_pengadaan_barang_kategori: this.data.master_pengadaan_barang_kategori,
-                master_pengadaan_barang_domain: "AMERTA-PASURUAN",
+                master_pengadaan_barang_domain: this.$store.getters.Auth_domain,
                 master_pengadaan_barang_created: new Date().toISOString().slice(0, 10),
                 master_pengadaan_barang_updated: new Date().toISOString().slice(0, 10),
                 master_pengadaan_barang_user_updated: "ADMIN-PASURUAN",
@@ -136,7 +136,7 @@ export default {
         },
         // LIST DATA 
         getdata() {
-            Axios.get(allSource.getDataPengadaanBarang).then((response) => {
+            Axios.get(allSource.getDataPengadaanBarang + this.$store.getters.Auth_domain).then((response) => {
                 this.list_item = response.data;
                 // console.log(response.data)
             })

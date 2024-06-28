@@ -95,7 +95,7 @@ export default {
         },
         // LIST DATA 
         getdata() {
-            Axios.get(allSource.getDataHargaMaterial).then((response) => {
+            Axios.get(allSource.getDataHargaMaterial + this.$store.getters.Auth_domain).then((response) => {
                 this.list_item = response.data;
             })
         },

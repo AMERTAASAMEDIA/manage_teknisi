@@ -49,7 +49,7 @@ export default {
         submitForm() {
             let newdata = {
                 "master_harga_material_nama": this.tambahdata.nama_barang,
-                "master_harga_material_domain": "AMERTA-PASURUAN",
+                "master_harga_material_domain": this.$store.getters.Auth_domain,
                 "master_harga_material_created": new Date().toISOString().slice(0, 10),
                 "master_harga_material_updated": new Date().toISOString().slice(0, 10),
                 "master_harga_material_user_updated": "ADMIN-PASURUAN",
@@ -65,7 +65,7 @@ export default {
             // console.log(this.detaildata)
             let newdata = {
                 "master_harga_material_nama": this.tambahdata.nama_barang,
-                "master_harga_material_domain": "AMERTA-PASURUAN",
+                "master_harga_material_domain": this.$store.getters.Auth_domain,
                 "master_harga_material_created": new Date().toISOString().slice(0, 10),
                 "master_harga_material_updated": new Date().toISOString().slice(0, 10),
                 "master_harga_material_user_updated": "ADMIN-PASURUAN",

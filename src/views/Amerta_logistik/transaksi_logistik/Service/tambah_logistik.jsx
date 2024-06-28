@@ -101,7 +101,7 @@ export default {
         Tr_logistic_status_tiba: this.tambah_data.Tr_logistic_status_tiba,
         Tr_logistic_no_resi: this.tambah_data.Tr_logistic_no_resi,
         Tr_logistic_status: 'Y',
-        Tr_logistic_domain: 'AMERTA-PASURUAN',
+        Tr_logistic_domain: this.$store.getters.Auth_domain,
         Tr_logistic_detail: this.formArray,
         Tr_logistic_gambar: this.files,
       }

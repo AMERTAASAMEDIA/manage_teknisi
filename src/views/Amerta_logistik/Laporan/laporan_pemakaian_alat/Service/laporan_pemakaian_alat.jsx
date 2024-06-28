@@ -35,7 +35,7 @@ export default {
             return amount.toLocaleString('id-ID', { style: 'currency', currency: 'IDR', minimumFractionDigits: 0 });
         },
         getdata() {
-            Axios.get(allSource.getDataTransaksiLogistikKeluarTypeAlat).then((response) => {
+            Axios.get(allSource.getDataTransaksiLogistikKeluarTypeAlat + this.$store.getters.Auth_domain + "/PCS").then((response) => {
                 this.list_item = response.data;
                 console.log(response.data)
                 // console.log(response.data)

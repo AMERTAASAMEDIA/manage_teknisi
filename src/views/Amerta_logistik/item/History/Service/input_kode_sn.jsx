@@ -44,7 +44,7 @@ export default {
                     // const element = array[i];
                     let newdata = {
                         item_list_nama: this.detail_data.item_nama,
-                        item_list_domain: "AMERTA-PASURUAN",
+                        item_list_domain: this.$store.getters.Auth_domain,
                         item_list_kode_sn: this.item_nama[i],
                         item_list_harga: this.detail_data.item_harga,
                         item_list_created: new Date().toISOString().slice(0, 10),

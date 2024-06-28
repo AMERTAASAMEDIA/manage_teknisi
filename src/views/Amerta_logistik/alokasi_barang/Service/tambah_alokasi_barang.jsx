@@ -77,7 +77,7 @@ export default {
           Tr_logistic_keluar_user_created: 'ADMIN-PASURUAN',
           Tr_logistic_keluar_status: 'Y',
           Tr_logistic_keluar_type: 'PCS',
-          Tr_logistic_keluar_domain: 'AMERTA-PASURUAN',
+          Tr_logistic_keluar_domain: this.$store.getters.Auth_domain,
           Tr_logistic_keluar_detail: {
             Tr_logistic_keluar_detail_no_husble: '',
             Tr_logistic_keluar_detail_tanggal: new Date(this.tambah_data.Tr_logistic_keluar_tanggal)

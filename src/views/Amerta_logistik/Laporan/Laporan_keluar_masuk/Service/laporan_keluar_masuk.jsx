@@ -33,7 +33,7 @@ export default {
           icon: 'error',
         })
       } else {
-        Axios.post(allSource.getDataTransaksiLogistikMasukFilterTanggal + this.cari).then(
+        Axios.post(allSource.getDataTransaksiLogistikMasukFilterTanggal + this.$store.getters.Auth_domain + "/" + this.cari).then(
           (response) => {
             this.list_item = response.data
             this.VisibleTable = true

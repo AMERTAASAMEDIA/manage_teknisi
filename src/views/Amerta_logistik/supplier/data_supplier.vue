@@ -8,6 +8,7 @@
                 <CCardBody>
                     <p class="text-body-secondary small">
                         DATA SUPPLIER YANG SUDAH MENJADI LANGGANAN AMERTA ASA MEDIA.
+                        {{ this.$store.getters.Auth_name }}
                     </p>
                 </CCardBody>
             </CCard>
