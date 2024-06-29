@@ -61,7 +61,7 @@
                                                         :to="{ name: 'AlokasiBarang', params: { id: items._id } }">Transaksi</router-link>
                                                 </CDropdownItem>
                                                 <CDropdownItem v-if="items.item_list_status_pemakaian === 'Y'">
-                                                    <a color="primary" role="button" @click="reinput(items._id)">Re-Input barang
+                                                    <a color="primary" role="button" @click="reinput(items)">Re-Input barang
                                                     </a>
                                                 </CDropdownItem>
                                                 <CDropdownItem><router-link style="text-decoration: none"

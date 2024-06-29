@@ -223,6 +223,24 @@ export default [{
 
         ],
     },
+    {
+        component: 'CNavGroup',
+        name: 'Reinput',
+        to: '/pages',
+        icon: 'cil-calculator',
+        items: [{
+                component: 'CNavItem',
+                name: 'Harian',
+                to: '/laporan_reinput',
+            },
+            {
+                component: 'CNavItem',
+                name: 'Bulanan',
+                to: '/laporan_reinput_bulanan',
+            },
+
+        ],
+    },
     // {
     //   component: 'CNavGroup',
     //   name: 'Pages',

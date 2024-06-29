@@ -203,6 +203,22 @@ const routes = [{
                     ),
             },
             {
+                path: '/laporan_reinput',
+                name: 'LaporanReinput',
+                component: () =>
+                    import (
+                        '@/views/Amerta_logistik/Laporan/Laporan_reinput/laporan_reinput.vue'
+                    ),
+            },
+            {
+                path: '/laporan_reinput_bulanan',
+                name: 'LaporanReinputBulanan',
+                component: () =>
+                    import (
+                        '@/views/Amerta_logistik/Laporan/Laporan_reinput/laporan_reinput_bulanan.vue'
+                    ),
+            },
+            {
                 path: '/laporan_aset',
                 name: 'LaporanAset',
                 component: () =>

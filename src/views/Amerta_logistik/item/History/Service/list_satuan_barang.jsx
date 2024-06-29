@@ -23,8 +23,9 @@ export default {
     }
   },
   methods: {
-    reinput(id) {
-      console.log(id)
+    reinput(items) {
+      // console.log(items)
+      // Axios.get(allSource.getDataTransaksiReinput + this.$store.getters.Auth_domain)
       this.$swal
         .fire({
           title: 'Simpan perubahan?',
@@ -43,7 +44,26 @@ export default {
               icon: 'success',
             })
           } else {
-            Axios.put(allSource.updateDataListItemById + id, { item_list_status_pemakaian: 'N' })
+            const today = new Date();
+            const tahun = today.getFullYear();
+            const bulan = today.getMonth() + 1;
+            const tanggal = today.getDate();
+            const NoTransaksaiGenerate = items.item_list_nama + "-" + tahun + bulan + tanggal;
+            let newlaporanreinput = {
+              Tr_reinput_pic: this.$store.getters.Auth_username,
+              Tr_reinput_supplier:this.$store.getters.Auth_username,
+              Tr_reinput_status:"Y",
+              Tr_reinput_nama_barang: items.item_list_nama,
+              Tr_reinput_jumlah:"1",
+              Tr_reinput_keterangan:`DIKEMBALIKAN DIREINPUT OLEH ${this.$store.getters.Auth_username}`,
+              Tr_reinput_tindak_lanjut:"KOSONG",
+              Tr_reinput_domain: this.$store.getters.Auth_domain,
+              Tr_reinput_created: new Date().toISOString().slice(0, 10),
+              Tr_reinput_user_updated: this.$store.getters.Auth_username,
+              Tr_reinput_no_transaksi: NoTransaksaiGenerate
+            }
+            Axios.post(allSource.createDataTransaksiReinput, newlaporanreinput)
+            Axios.put(allSource.updateDataListItemById + items._id, { item_list_status_pemakaian: 'N' })
               .then((response) => {
                 // this.$router.go(-1)
                 this.getdata()

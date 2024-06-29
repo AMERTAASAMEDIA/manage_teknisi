@@ -61,13 +61,18 @@ const getDataTransaksiLogistikKeluarTypeKabel = Server + `Tr_logistic_keluar/TrL
 const getDataTransaksiLogistikKeluarTypeAlat = Server + `Tr_logistic_keluar/TrLogisticKeluar/getdatatype/`;
 const createDataTransaksiLogistikKeluar = Server + `Tr_logistic_keluar/TrLogisticKeluar/create`;
 const getDataTransaksiLogistikKeluarbyId = Server + `Tr_logistic_keluar/TrLogisticKeluar/getbyid/`;
-const updateDataTransaksiLogistikKeluarById = Server + `Tr_logistic_keluar/TrLogisticKeluar/updatebyid/`
+const updateDataTransaksiLogistikKeluarById = Server + `Tr_logistic_keluar/TrLogisticKeluar/updatebyid/`;
 
 // Transaksi QC 
 const getDataTransaksiQC = Server + `Tr_qc/TrQC/getdata/AMERTA-PASURUAN`;
 const createDataTransaksiQC= Server + `Tr_qc/TrQC/create`;
 const createDataTransaksiQcGambar = Server + `Tr_qc/TrQC/createimage`
 const getDataTransaksiQCDetail= Server + `Tr_qc/TrQC/getbyid/`;
+
+
+// Transaksi Reinput 
+const getDataTransaksiReinput = Server + `Tr_reinput/Trreinput/getdata/`;
+const createDataTransaksiReinput = Server + `Tr_reinput/Trreinput/create`;
 
 
 
@@ -131,5 +136,9 @@ export default {
     getDataTransaksiQC,
     createDataTransaksiQC,
     createDataTransaksiQcGambar,
-    getDataTransaksiQCDetail
+    getDataTransaksiQCDetail,
+
+    // Transaksi reinput 
+    getDataTransaksiReinput,
+    createDataTransaksiReinput
 }
