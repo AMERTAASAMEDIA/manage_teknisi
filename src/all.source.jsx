@@ -1,4 +1,4 @@
-const localhost = "http://localhost:4000/api/";
+// const localhost = "http://localhost:4000/api/";
 
 const Server = "http://77.37.47.90:4000/api/";
 

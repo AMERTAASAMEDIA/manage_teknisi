@@ -37,7 +37,7 @@ export default createStore({
     actions: {
         async login({ commit }, user) {
             try {
-                const response = await axios.post('http://localhost:4000/api/Auth/login', user);
+                const response = await axios.post('http://77.37.47.90:4000/api/api/Auth/login', user);
                 localStorage.setItem('Auth_data', response.data.data)
                 localStorage.setItem('Auth_role', response.data.data.Auth_role)
                 localStorage.setItem('Auth_username', response.data.data.Auth_username)
@@ -57,7 +57,7 @@ export default createStore({
         },
         async logout({ commit }) {
             try {
-                await axios.post('http://localhost:4000/api/Auth/login');
+                await axios.post('http://77.37.47.90:4000/api/Auth/login');
                 commit('LOGOUT');
             } catch (error) {
                 throw new Error('Logout failed');
