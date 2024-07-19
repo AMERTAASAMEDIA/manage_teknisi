@@ -29,9 +29,9 @@ onMounted(() => {
           >26K
           <span class="fs-6 fw-normal"> (-12.4% <CIcon icon="cil-arrow-bottom" />) </span>
         </template>
-        <template #title>Users</template>
+        <template #title>Pelanggan</template>
         <template #action>
-          <CDropdown placement="bottom-end">
+          <!-- <CDropdown placement="bottom-end">
             <CDropdownToggle color="transparent" class="p-0 text-white" :caret="false">
               <CIcon icon="cil-options" class="text-white" />
             </CDropdownToggle>
@@ -40,7 +40,7 @@ onMounted(() => {
               <CDropdownItem href="#">Another action</CDropdownItem>
               <CDropdownItem href="#">Something else here</CDropdownItem>
             </CDropdownMenu>
-          </CDropdown>
+          </CDropdown> -->
         </template>
         <template #chart>
           <CChart
@@ -113,9 +113,9 @@ onMounted(() => {
           >$6.200
           <span class="fs-6 fw-normal"> (40.9% <CIcon icon="cil-arrow-top" />) </span>
         </template>
-        <template #title>Income</template>
+        <template #title>Pelanggan Baru</template>
         <template #action>
-          <CDropdown placement="bottom-end">
+          <!-- <CDropdown placement="bottom-end">
             <CDropdownToggle color="transparent" class="p-0 text-white" :caret="false">
               <CIcon icon="cil-options" class="text-white" />
             </CDropdownToggle>
@@ -124,7 +124,7 @@ onMounted(() => {
               <CDropdownItem href="#">Another action</CDropdownItem>
               <CDropdownItem href="#">Something else here</CDropdownItem>
             </CDropdownMenu>
-          </CDropdown>
+          </CDropdown> -->
         </template>
         <template #chart>
           <CChart
@@ -196,9 +196,9 @@ onMounted(() => {
           >2.49%
           <span class="fs-6 fw-normal"> (84.7% <CIcon icon="cil-arrow-top" />) </span>
         </template>
-        <template #title>Conversion Rate</template>
+        <template #title>Complain Rate</template>
         <template #action>
-          <CDropdown placement="bottom-end">
+          <!-- <CDropdown placement="bottom-end">
             <CDropdownToggle color="transparent" class="p-0 text-white" :caret="false">
               <CIcon icon="cil-options" class="text-white" />
             </CDropdownToggle>
@@ -207,7 +207,7 @@ onMounted(() => {
               <CDropdownItem href="#">Another action</CDropdownItem>
               <CDropdownItem href="#">Something else here</CDropdownItem>
             </CDropdownMenu>
-          </CDropdown>
+          </CDropdown> -->
         </template>
         <template #chart>
           <CChart
@@ -266,7 +266,7 @@ onMounted(() => {
           >44K
           <span class="fs-6 fw-normal"> (-23.6% <CIcon icon="cil-arrow-bottom" />) </span>
         </template>
-        <template #title>Sessions</template>
+        <template #title>Pelanggan Putus</template>
         <template #action>
           <CDropdown placement="bottom-end">
             <CDropdownToggle color="transparent" class="p-0 text-white" :caret="false">
