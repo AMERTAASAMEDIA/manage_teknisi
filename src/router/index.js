@@ -556,7 +556,7 @@ router.beforeEach((to, from, next) => {
 
     if (requiresAuth) {
         if (!isAuthenticated) {
-            next({ name: 'Login' })
+            next({ path: 'login' })
         } else if (roles && !roles.includes(userRole)) {
             next({ name: 'Dashboard' })
         } else {
