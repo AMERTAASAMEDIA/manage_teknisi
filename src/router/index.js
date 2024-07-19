@@ -1,5 +1,5 @@
 import { h, resolveComponent } from 'vue'
-import { createRouter, createWebHashHistory } from 'vue-router'
+import { createRouter, createWebHashHistory, createWebHistory } from 'vue-router'
 
 import DefaultLayout from '@/layouts/DefaultLayout'
 import store from '../store'
@@ -11,7 +11,7 @@ const routes = [{
         redirect: '/dashboard',
         meta: {
             requiresAuth: true,
-            roles: ['LOGISTIK'],
+            roles: ['KOORDINATOR'],
         },
         children: [{
                 path: '/dashboard',
@@ -94,6 +94,13 @@ const routes = [{
                 name: 'Supplier',
                 component: () =>
                     import ('@/views/Amerta_logistik/supplier/data_supplier.vue'),
+                // redirect: '/item',
+            },
+            {
+                path: '/ticketing',
+                name: 'Ticketing',
+                component: () =>
+                    import ('@/views/Amerta_koordinator/ticketing/Table/table.vue'),
                 // redirect: '/item',
             },
             {
@@ -525,7 +532,7 @@ const routes = [{
                     import ('@/views/pages/Page500'),
             },
             {
-                path: 'login',
+                path: '/login',
                 name: 'Login',
                 component: () =>
                     import ('@/views/pages/Login'),
@@ -541,7 +548,7 @@ const routes = [{
 ]
 
 const router = createRouter({
-    history: createWebHashHistory(process.env.BASE_URL),
+    history: createWebHistory(process.env.BASE_URL),
     routes,
     scrollBehavior() {
         // always scroll to top
@@ -550,21 +557,23 @@ const router = createRouter({
 })
 
 router.beforeEach((to, from, next) => {
-    const { requiresAuth, roles } = to.meta
+    // const { requiresAuth, roles } = to.meta
     const isAuthenticated = store.getters.isAuthenticated
     const userRole = store.getters.Auth_role
-
-    if (requiresAuth) {
-        if (!isAuthenticated) {
-            next({ path: 'login' })
-        } else if (roles && !roles.includes(userRole)) {
-            next({ name: 'Dashboard' })
+    if (to.meta.requiresAuth) {
+        if (!to.meta.auth && !userRole) {
+            next({ path: '/login' })
+        } else if (to.meta.auth && userRole === 'KOORDINATOR') {
+            next({ path: '/' })
         } else {
             next()
         }
     } else {
         next()
     }
+    console.log(isAuthenticated);
+    console.log(to.meta.roles)
+    console.log(to.meta.requiresAuth)
 })
 
 export default router

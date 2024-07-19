@@ -47,7 +47,7 @@ const tableExample = [
       period: 'Jun 11, 2023 - Jul 10, 2023',
       color: 'success',
     },
-    payment: { name: 'Mastercard', icon: 'cib-cc-mastercard' },
+    // payment: { name: 'Mastercard', icon: 'cib-cc-mastercard' },
     activity: '10 sec ago',
   },
   {
@@ -63,7 +63,7 @@ const tableExample = [
       period: 'Jun 11, 2023 - Jul 10, 2023',
       color: 'info',
     },
-    payment: { name: 'Visa', icon: 'cib-cc-visa' },
+    // payment: { name: 'Visa', icon: 'cib-cc-visa' },
     activity: '5 minutes ago',
   },
   {
@@ -75,7 +75,7 @@ const tableExample = [
       period: 'Jun 11, 2023 - Jul 10, 2023',
       color: 'warning',
     },
-    payment: { name: 'Stripe', icon: 'cib-cc-stripe' },
+    // payment: { name: 'Stripe', icon: 'cib-cc-stripe' },
     activity: '1 hour ago',
   },
   {
@@ -87,7 +87,7 @@ const tableExample = [
       period: 'Jun 11, 2023 - Jul 10, 2023',
       color: 'danger',
     },
-    payment: { name: 'PayPal', icon: 'cib-cc-paypal' },
+    // payment: { name: 'PayPal', icon: 'cib-cc-paypal' },
     activity: 'Last month',
   },
   {
@@ -103,7 +103,7 @@ const tableExample = [
       period: 'Jun 11, 2023 - Jul 10, 2023',
       color: 'primary',
     },
-    payment: { name: 'Google Wallet', icon: 'cib-cc-apple-pay' },
+    // payment: { name: 'Google Wallet', icon: 'cib-cc-apple-pay' },
     activity: 'Last week',
   },
   {
@@ -119,7 +119,7 @@ const tableExample = [
       period: 'Jun 11, 2023 - Jul 10, 2023',
       color: 'success',
     },
-    payment: { name: 'Amex', icon: 'cib-cc-amex' },
+    // payment: { name: 'Amex', icon: 'cib-cc-amex' },
     activity: 'Last week',
   },
 ]
@@ -134,7 +134,7 @@ const tableExample = [
           <CCardBody>
             <CRow>
               <CCol :sm="5">
-                <h4 id="traffic" class="card-title mb-0">Tranffic Penggunaan Barang</h4>
+                <h4 id="traffic" class="card-title mb-0">Traffic Tiket Pelanggan</h4>
                 <div class="small text-body-secondary">January - December 2024</div>
               </CCol>
               <CCol :sm="7" class="d-none d-md-block">
@@ -169,15 +169,15 @@ const tableExample = [
                 <div class="fw-semibold text-truncate">29.703 Users (40%)</div>
                 <CProgress class="mt-4" color="success" thin :precision="1" :value="40" />
               </CCol>
-              <CCol>
+              <!-- <CCol>
                 <div class="text-body-secondary">Jalur</div>
                 <div class="fw-semibold text-truncate">24.093 Users (20%)</div>
                 <CProgress class="mt-4" color="info" thin :precision="1" :value="20" />
-              </CCol>
+              </CCol> -->
               <CCol>
                 <div class="text-body-secondary">Maintenance</div>
                 <div class="fw-semibold text-truncate">78.706 Views (60%)</div>
-                <CProgress class="mt-4" color="warning" thin :precision="1" :value="60" />
+                <CProgress class="mt-4" color="info" thin :precision="1" :value="60" />
               </CCol>
             </CRow>
           </CCardFooter>
@@ -188,26 +188,26 @@ const tableExample = [
     <CRow>
       <CCol :md="12">
         <CCard class="mb-4">
-          <CCardHeader> Pemasukan Barang </CCardHeader>
+          <CCardHeader>List Penangan Tiket(PSB) - July </CCardHeader>
           <CCardBody>
             <CRow>
               <CCol :sm="12" :lg="12">
                 <CRow>
                   <CCol :xs="6">
-                    <div class="border-start border-start-4 border-start-info py-1 px-3 mb-3">
-                      <div class="text-body-secondary small">Box</div>
+                    <div class="border-start border-start-4 border-start-success py-1 px-3 mb-3">
+                      <div class="text-body-secondary small">PSB</div>
                       <div class="fs-5 fw-semibold">9,123</div>
                     </div>
                   </CCol>
                   <CCol :xs="6">
-                    <div class="border-start border-start-4 border-start-danger py-1 px-3 mb-3">
-                      <div class="text-body-secondary small">Meter</div>
+                    <div class="border-start border-start-4 border-start-info py-1 px-3 mb-3">
+                      <div class="text-body-secondary small">Maintenance</div>
                       <div class="fs-5 fw-semibold">22,643</div>
                     </div>
                   </CCol>
                 </CRow>
                 <hr class="mt-0" />
-                <div
+                <!-- <div
                   v-for="item in progressGroupExample1"
                   :key="item.title"
                   class="progress-group mb-4"
@@ -219,50 +219,7 @@ const tableExample = [
                     <CProgress thin color="info" :value="item.value1" />
                     <CProgress thin color="danger" :value="item.value2" />
                   </div>
-                </div>
-              </CCol>
-              <CCol :sm="12" :lg="12">
-                <CRow>
-                  <CCol :xs="6">
-                    <div class="border-start border-start-4 border-start-warning py-1 px-3 mb-3">
-                      <div class="text-body-secondary small">Pageviews</div>
-                      <div class="fs-5 fw-semibold">78,623</div>
-                    </div>
-                  </CCol>
-                  <CCol :xs="6">
-                    <div class="border-start border-start-4 border-start-success py-1 px-3 mb-3">
-                      <div class="text-body-secondary small">Organic</div>
-                      <div class="fs-5 fw-semibold">49,123</div>
-                    </div>
-                  </CCol>
-                </CRow>
-                <hr class="mt-0" />
-                <div v-for="item in progressGroupExample2" :key="item.title" class="progress-group">
-                  <div class="progress-group-header">
-                    <CIcon :icon="item.icon" class="me-2" size="lg" />
-                    <span class="title">{{ item.title }}</span>
-                    <span class="ms-auto fw-semibold">{{ item.value }}%</span>
-                  </div>
-                  <div class="progress-group-bars">
-                    <CProgress thin :value="item.value" color="warning" />
-                  </div>
-                </div>
-
-                <div class="mb-5"></div>
-
-                <div v-for="item in progressGroupExample3" :key="item.title" class="progress-group">
-                  <div class="progress-group-header">
-                    <CIcon :icon="item.icon" class="me-2" size="lg" />
-                    <span class="title">{{ item.title }}</span>
-                    <span class="ms-auto fw-semibold">
-                      {{ item.value }}
-                      <span class="text-body-secondary small">({{ item.percent }}%)</span>
-                    </span>
-                  </div>
-                  <div class="progress-group-bars">
-                    <CProgress thin :value="item.percent" color="success" />
-                  </div>
-                </div>
+                </div> -->
               </CCol>
             </CRow>
             <br />
@@ -272,15 +229,15 @@ const tableExample = [
                   <CTableHeaderCell class="bg-body-secondary text-center">
                     <CIcon name="cil-people" />
                   </CTableHeaderCell>
-                  <CTableHeaderCell class="bg-body-secondary"> User </CTableHeaderCell>
-                  <CTableHeaderCell class="bg-body-secondary text-center">
+                  <CTableHeaderCell class="bg-body-secondary"> Pegawai </CTableHeaderCell>
+                  <!-- <CTableHeaderCell class="bg-body-secondary text-center">
                     Country
-                  </CTableHeaderCell>
-                  <CTableHeaderCell class="bg-body-secondary"> Usage </CTableHeaderCell>
-                  <CTableHeaderCell class="bg-body-secondary text-center">
+                  </CTableHeaderCell> -->
+                  <!-- <CTableHeaderCell class="bg-body-secondary"> Usage </CTableHeaderCell> -->
+                  <!-- <CTableHeaderCell class="bg-body-secondary text-center">
                     Payment Method
-                  </CTableHeaderCell>
-                  <CTableHeaderCell class="bg-body-secondary"> Activity </CTableHeaderCell>
+                  </CTableHeaderCell> -->
+                  <CTableHeaderCell class="bg-body-secondary"> Aktivitas </CTableHeaderCell>
                 </CTableRow>
               </CTableHead>
               <CTableBody>
@@ -295,10 +252,10 @@ const tableExample = [
                       {{ item.user.registered }}
                     </div>
                   </CTableDataCell>
-                  <CTableDataCell class="text-center">
+                  <!-- <CTableDataCell class="text-center">
                     <CIcon size="xl" :name="item.country.flag" :title="item.country.name" />
-                  </CTableDataCell>
-                  <CTableDataCell>
+                  </CTableDataCell> -->
+                  <!-- <CTableDataCell>
                     <div class="d-flex justify-content-between align-items-baseline">
                       <div class="fw-semibold">{{ item.usage.value }}%</div>
                       <div class="text-nowrap text-body-secondary small ms-3">
@@ -306,10 +263,10 @@ const tableExample = [
                       </div>
                     </div>
                     <CProgress thin :color="item.usage.color" :value="item.usage.value" />
-                  </CTableDataCell>
-                  <CTableDataCell class="text-center">
+                  </CTableDataCell> -->
+                  <!-- <CTableDataCell class="text-center">
                     <CIcon size="xl" :name="item.payment.icon" />
-                  </CTableDataCell>
+                  </CTableDataCell> -->
                   <CTableDataCell>
                     <div class="small text-body-secondary">Last login</div>
                     <div class="fw-semibold text-nowrap">
