@@ -16,18 +16,9 @@ export default {
                 let email = this.email;
                 let password = this.password
                 await this.login({ email, password })
-                    .then((response) => {
-                        // console.log(this.errorMessage)
-                        // if (this.$store.getters.Auth_role === 'KOORDINATOR') {
-                        //     // this.$router.push('/dashboard');
-                        //     this.$swal('Selamat Datang ' + this.$store.getters.Auth_data.Auth_email, 'Dashboard', 'success');
-                        //     // this.$router.push('/dashboard');
-                        // } else {
-                        //     this.$swal('Maaf ' + this.$store.getters.Auth_data.Auth_email, 'Anda bukan Divisi Logistik', 'error');
-                        // }
-                        // console.log("Hallo")
-                        // console.log(this.$store.getters.Auth_role)
-                        this.$router.push('/dashboard');
+                    .then(() => {
+                        this.$swal('Selamat Datang', 'Dashboard', 'success');
+                        this.$router.push('/')
                     })
             } catch (error) {
                 this.errorMessage = error.message

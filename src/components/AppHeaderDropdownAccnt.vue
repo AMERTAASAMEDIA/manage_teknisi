@@ -1,13 +1,22 @@
 <script setup>
 import avatar from '@/assets/images/avatars/8.jpg';
-// export default {
-//   data() {
-//     return {
-//       id: this.$route.params._id,
-//     }
-//   },
-// }
 const itemsCount = 42
+</script>
+<script>
+import { toast } from 'vue3-toastify'
+import 'vue3-toastify/dist/index.css'
+import { mapActions } from 'vuex';
+export default {
+  methods: {
+    ...mapActions(['logout']),
+    async Logout() {
+      this.logout().then(() => {
+        this.$swal('Goodbye', 'AAM', 'success');
+        this.$router.push('/login')
+      })
+    }
+  }
+}
 </script>
 <template>
   <CDropdown placement="bottom-end" variant="nav-item">
@@ -15,48 +24,22 @@ const itemsCount = 42
       <CAvatar :src="avatar" size="md" />
     </CDropdownToggle>
     <CDropdownMenu class="pt-0">
-      <!-- <CDropdownHeader
-        component="h6"
-        class="bg-body-secondary text-body-secondary fw-semibold mb-2 rounded-top"
-      >
-        Account
+      <CDropdownHeader component="h6" class="bg-body-secondary text-body-secondary fw-semibold mb-2 rounded-top">
+        Akun
       </CDropdownHeader>
       <CDropdownItem>
-        <CIcon icon="cil-bell" /> Updates
+        <CIcon icon="cil-bell" /> Log Aktivitas
         <CBadge color="info" class="ms-auto">{{ itemsCount }}</CBadge>
       </CDropdownItem>
       <CDropdownItem>
-        <CIcon icon="cil-envelope-open" /> Messages
-        <CBadge color="success" class="ms-auto">{{ itemsCount }}</CBadge>
-      </CDropdownItem>
-      <CDropdownItem>
-        <CIcon icon="cil-task" /> Tasks
+        <CIcon icon="cil-task" /> Pekerjaan
         <CBadge color="danger" class="ms-auto">{{ itemsCount }}</CBadge>
       </CDropdownItem>
       <CDropdownItem>
-        <CIcon icon="cil-comment-square" /> Comments
-        <CBadge color="warning" class="ms-auto">{{ itemsCount }}</CBadge>
+        <CIcon icon="cil-shield-alt" /> Pengaturan
       </CDropdownItem>
-      <CDropdownHeader
-        component="h6"
-        class="bg-body-secondary text-body-secondary fw-semibold my-2"
-      >
-        Settings
-      </CDropdownHeader>
-      <CDropdownItem> <CIcon icon="cil-user" /> Profile </CDropdownItem>
-      <CDropdownItem> <CIcon icon="cil-settings" /> Settings </CDropdownItem>
-      <CDropdownItem>
-        <CIcon icon="cil-dollar" /> Payments
-        <CBadge color="secondary" class="ms-auto">{{ itemsCount }}</CBadge>
-      </CDropdownItem>
-      <CDropdownItem>
-        <CIcon icon="cil-file" /> Projects
-        <CBadge color="primary" class="ms-auto">{{ itemsCount }}</CBadge>
-      </CDropdownItem>
-      <CDropdownDivider /> -->
-      <!-- <CDropdownItem> <CIcon icon="cil-shield-alt" /> Lock Account </CDropdownItem> -->
-      <CDropdownItem>
-        <CIcon icon="cil-lock-locked" click="Logout()" /> Logout 
+      <CDropdownItem @click="Logout()">
+        <CIcon icon="cil-lock-locked" /> Keluar
       </CDropdownItem>
     </CDropdownMenu>
   </CDropdown>

@@ -27,19 +27,8 @@ app.use(CoreuiVue)
 app.provide('icons', icons)
 app.component('CIcon', CIcon)
 app.component('DocsExample', DocsExample)
-// Plugin Tampilan 
-app.use(VueSweetalert2);
-// app.use(VueCurrencyFilter,{
-//     symbol: 'Rp.',
-//     thousandsSeparator: '.',
-//     fractionCount: 0,
-//     fractionSeparator: ',',
-//     symbolPosition: 'front',
-//     symbolSpacing: true
-// })
-// Unused 
-// app.use('JwPagination', JwPagination);
-// app.use('table', Table)
+    // Plugin Tampilan 
+app.use(VueSweetalert2)
 
 
 app.use(store).mount('#app')
