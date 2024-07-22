@@ -45,7 +45,7 @@
                   <p>Selamat Datang Tim koordinator</p>
                   <!-- <p v-if="errorMessage" class="error">{{ errorMessage }}</p> -->
                   <CButton color="light" variant="outline" class="mt-3" @click="clicktoshowdata()">
-                    Register Now!
+                    Daftar
                   </CButton>
                 </div>
               </CCardBody>

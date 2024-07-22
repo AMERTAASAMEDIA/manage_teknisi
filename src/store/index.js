@@ -1,5 +1,6 @@
 import { createStore } from 'vuex';
 import axios from 'axios';
+import router from '../router';
 
 export default createStore({
     state: {
@@ -39,7 +40,7 @@ export default createStore({
             try {
                 const response = await axios.post('http://localhost:4000/api/Auth/login', user);
                 // localStorage.setItem('Auth_data', response.data.data)
-                console.log(response.data.data)
+                // console.log(response.data.data)
                 localStorage.setItem('Auth_role', response.data.data.Auth_role)
                 localStorage.setItem('Auth_username', response.data.data.Auth_username)
                 localStorage.setItem('Auth_domain', response.data.data.Auth_domain)
@@ -50,14 +51,18 @@ export default createStore({
                 commit('SET_AUTH_domain', response.data.data.Auth_domain)
                 commit('SET_AUTH_email', response.data.data.Auth_email)
                     // this.$router.push('/dashboard')
+                    // router.push('/')
+                    // this.$router.push('/')
             } catch (error) {
                 throw new Error(error.response.data.message || 'An error occurred');
             }
         },
         async logout({ commit }) {
             try {
-                await axios.post('http://77.37.47.90:4000/api/Auth/login');
+                // await axios.post('http://77.37.47.90:4000/api/Auth/login');
                 commit('LOGOUT');
+                localStorage.clear();
+                // await this.$router.push('/login')
             } catch (error) {
                 throw new Error('Logout failed');
             }
