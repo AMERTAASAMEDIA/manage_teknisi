@@ -5,10 +5,10 @@ const Server = "http://localhost:4000/api/";
 
 
 // DATA TICKET 
-const getDataTicket = Server + `Tr_task/gettask/`;
-const getDetailTicket = Server + `Tr_task/gettaskbyid/`;
-const createDataTicket = Server + `Tr_task/createtask`;
-const updateDataTicket = Server + `Tr_task/updatetrtask/`;
+const getDataTicket = Server + `Tr_task/Trtask/getdata/`;
+const getDetailTicket = Server + `Tr_task/Trtask/getdatabyid/`;
+const createDataTicket = Server + `Tr_task/Trtask/create`;
+const updateDataTicket = Server + `Tr_task/Trtask/updatebyid/`;
 
 
 
