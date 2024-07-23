@@ -7,8 +7,8 @@
                 </CCardHeader>
                 <CCardBody>
                     <p class="text-body-secondary small">
-                        DATA SUPPLIER YANG SUDAH MENJADI LANGGANAN AMERTA ASA MEDIA.
-                        {{ this.$store.getters.Auth_name }}
+                        {{ detail_item }}
+                        <!-- {{ this.$store.getters.Auth_username }} -->
                     </p>
                 </CCardBody>
             </CCard>
@@ -16,16 +16,17 @@
         <CCol :xs="12">
             <CCard class="mb-4">
                 <CCardHeader>
-                    <strong>Data Supplier</strong> <small>#</small>
+                    <strong>{{ data_item }}</strong> <small>#</small>
                 </CCardHeader>
                 <CCardBody>
                     <CRow class="mb-6">
-                        <!-- <CButton as="a" color="primary" href="#" role="button">Tambah Data</CButton> -->
                         <div class="col-sm-2">
                             <CButton color="primary" role="button" @click="() => { Visibletambahdata = true }">Tambah Data
                             </CButton>
+                            &nbsp;
+                            <p></p>
                         </div>
-                        <div class="col-sm-5">
+                        <div class="col-sm-5" style="right: -40%;">
                             <!-- <CButton as="a" color="primary" href="#" role="button">Tambah Data</CButton> -->
                             <CFormInput type="text" v-model="cari" placeholder="Cari" />
                         </div>
@@ -35,9 +36,8 @@
                                 <CTableRow>
                                     <CTableHeaderCell scope="col">No</CTableHeaderCell>
                                     <CTableHeaderCell scope="col">Nama</CTableHeaderCell>
-                                    <CTableHeaderCell scope="col">Alamat</CTableHeaderCell>
-                                    <CTableHeaderCell scope="col">Toko</CTableHeaderCell>
-                                    <CTableHeaderCell scope="col">No.Telepon</CTableHeaderCell>
+                                    <CTableHeaderCell scope="col">Prioritas</CTableHeaderCell>
+                                    <CTableHeaderCell scope="col">Lokasi</CTableHeaderCell>
                                     <CTableHeaderCell scope="col">#</CTableHeaderCell>
 
 
@@ -49,8 +49,6 @@
                                     <CTableDataCell>{{ items.master_supplier_nama }}</CTableDataCell>
                                     <CTableDataCell>{{ items.master_supplier_alamat }}</CTableDataCell>
                                     <CTableDataCell>{{ items.master_supplier_toko }}</CTableDataCell>
-                                    <CTableDataCell>{{ items.master_supplier_phone }}</CTableDataCell>
-
                                     <CTableDataCell>
                                         <CDropdown>
                                             <CDropdownToggle color="secondary">Aksi</CDropdownToggle>
@@ -83,7 +81,7 @@
         <CModal :visible="Visibletambahdata" @close="() => { Visibletambahdata = false }"
             aria-labelledby="LiveDemoExampleLabel">
             <CModalHeader>
-                <CModalTitle id="LiveDemoExampleLabel">Tambahkan Data Supplier</CModalTitle>
+                <CModalTitle id="LiveDemoExampleLabel">Tambahkan {{ data_item }}</CModalTitle>
             </CModalHeader>
             <CModalBody>
                 <CForm class="row g-4">
@@ -111,16 +109,6 @@
                         <!-- <CFormLabel for="inputPassword2" class="visually-hidden">Password</CFormLabel> -->
                         <CFormInput type="text" placeholder="Nama" v-model="data.master_supplier_toko" />
                     </div>
-                    <!-- Status Aktiv  -->
-                    <!-- <div class="col-auto">
-                        <CFormInput type="text" value="Status Aktif" readonly plain-text />
-                    </div> -->
-                    <!-- <div class="col-auto">
-                        <CFormSelect aria-label="Default select example" v-model="data.master_supplier_toko_status">
-                            <option value="Aktif">Aktif</option>
-                            <option value="Nonaktif">Nonaktif</option>
-                        </CFormSelect>
-                    </div> -->
                     <!-- Telepon  -->
                     <div class="col-auto">
                         <CFormInput type="text" value="No.Telepon(Nunggu API)" readonly plain-text />
