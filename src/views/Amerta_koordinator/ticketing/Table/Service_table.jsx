@@ -5,7 +5,8 @@ export default {
         return {
             Visibletambahdata: false,
             Visibledetaildata: false,
-            data_item: "Data Supplier",
+            data_item: "Data Ticket",
+            detail_item: "DATA TICKET YANG HARUS DITANGANI",
             list_item: [],
             cari: '',
             current: 1,
