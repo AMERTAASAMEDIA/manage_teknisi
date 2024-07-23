@@ -11,10 +11,24 @@ const createDataTicket = Server + `Tr_task/Trtask/create`;
 const updateDataTicket = Server + `Tr_task/Trtask/updatebyid/`;
 
 
+// DATA TEKNISI 
+const getDataTeknisi = Server + `Master_pengguna/MasterPengguna/getdata/`;
+const getDetailTeknisi = Server + `Master_pengguna/MasterPengguna/getbyid/`;
+const createDataTeknisi = Server + `Master_pengguna/MasterPengguna/create`;
+const updateDataTeknisi = Server + `Master_pengguna/MasterPengguna/updatebyid/`
+
+
 
 export default {
     getDataTicket,
     getDetailTicket,
     createDataTicket,
-    updateDataTicket
+    updateDataTicket,
+
+    // Teknisi 
+    getDataTeknisi,
+    getDetailTeknisi,
+    createDataTeknisi,
+    updateDataTeknisi
+
 }
