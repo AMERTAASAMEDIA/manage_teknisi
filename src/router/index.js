@@ -104,6 +104,20 @@ const routes = [{
                 // redirect: '/item',
             },
             {
+                path: '/teknisi',
+                name: 'Teknisi',
+                component: () =>
+                    import ('@/views/Amerta_koordinator/teknisi/Table/table.vue'),
+                // redirect: '/item',
+            },
+            {
+                path: '/project_infra',
+                name: 'ProjectInfra',
+                component: () =>
+                    import ('@/views/Amerta_koordinator/project_infra/Table/table.vue'),
+                // redirect: '/item',
+            },
+            {
                 path: '/edit-supplier/:id',
                 name: 'EditSupplier',
                 component: () =>
@@ -566,7 +580,7 @@ router.beforeEach((to, from, next) => {
         } else if (to.meta.auth && userRole === 'KOORDINATOR') {
             next({ path: '/' })
         } else {
-            next()
+            next() 
         }
     } else {
         next()

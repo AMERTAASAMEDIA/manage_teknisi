@@ -21,7 +21,7 @@ export default [{
     {
         component: 'CNavItem',
         name: 'Teknisi',
-        to: '/list_material',
+        to: '/teknisi',
         icon: 'cil-airplay',
     },
     {
@@ -43,8 +43,8 @@ export default [{
     {
         component: 'CNavItem',
         name: 'Project Infra',
-        to: '/item',
-        icon: 'cil-drop',
+        to: '/project_infra',
+        icon: 'cil-drop', 
     },
     {
         component: 'CNavGroup',
