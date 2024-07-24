@@ -1,5 +1,6 @@
 import Axios from "axios"
 import allSource from "../../../../all.source";
+import allSourceKoordinator from "../../../../all.source_koordinator";
 export default {
     data() {
         return {
@@ -64,18 +65,19 @@ export default {
         // CREATE DATA 
         createData() {
             let newdata = {
-                master_supplier_nama: this.data.master_supplier_nama,
-                master_supplier_status: "Y",
-                master_supplier_alamat: this.data.master_supplier_alamat,
-                master_supplier_toko: this.data.master_supplier_toko,
-                master_supplier_toko_status: "Aktif",
-                master_supplier_created: new Date().toISOString().slice(0, 10),
-                master_supplier_updated: new Date().toISOString().slice(0, 10),
-                master_supplier_user_updated: "COMING SOON FOR USER",
-                master_supplier_phone: this.data.master_supplier_phone
+                Tr_task_kode: this.data.Tr_task_kode,
+                Tr_task_status: "Y",
+                Tr_task_domain: this.$store.getters.Auth_domain,
+                Tr_task_priority: this.data.Tr_task_priority,
+                Tr_task_kategori: this.data.Tr_task_kategori,
+                Tr_task_created: new Date().toISOString().slice(0, 10),
+                Tr_task_updated: new Date().toISOString().slice(0, 10),
+                Tr_task_detail: this.data.Tr_task_detail,
+                Tr_task_pic: this.data.Tr_task_pic,
+                // Tr_task_pegawai_list_penangan : this.data.Tr_task_pegawai_list_penangan
             }
             // Clear after modal box closed 
-            Axios.post(allSource.createDataSupplier, newdata).then(() => {
+            Axios.post(allSourceKoordinator.createDataTicket, newdata).then(() => {
                 this.$swal.fire({
                     position: "center",
                     icon: "success",
@@ -92,8 +94,10 @@ export default {
         },
         // LIST DATA 
         getdata() {
-            Axios.get(allSource.getDataSupplier).then((response) => {
+            Axios.get(allSourceKoordinator.getDataTicket + this.$store.getters.Auth_domain).then((response) => {
                 this.list_item = response.data;
+                // console.log(response.data)
+                // alert(response.data)
             })
         },
         // Pagination with computed 
