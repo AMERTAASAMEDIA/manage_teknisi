@@ -117,11 +117,25 @@ const routes = [{
                     import ('@/views/Amerta_koordinator/project_infra/Table/table.vue'),
                 // redirect: '/item',
             },
+            // {
+            //     path: '/edit-supplier/:id',
+            //     name: 'EditSupplier',
+            //     component: () =>
+            //         import ('@/views/Amerta_logistik/supplier/edit_supplier.vue'),
+            //     // redirect: '/item',
+            // },
             {
-                path: '/edit-supplier/:id',
-                name: 'EditSupplier',
+                path: '/edit-ticketing/:id',
+                name: 'EditTicketing',
                 component: () =>
-                    import ('@/views/Amerta_logistik/supplier/edit_supplier.vue'),
+                    import ('@/views/Amerta_koordinator/ticketing/Form/update.vue'),
+                // redirect: '/item',
+            },
+            {
+                path: '/edit-infra/:id',
+                name: 'EditInfra',
+                component: () =>
+                    import ('@/views/Amerta_koordinator/project_infra/Form/update.vue'),
                 // redirect: '/item',
             },
             {

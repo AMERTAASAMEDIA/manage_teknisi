@@ -1,132 +1,141 @@
-import Axios from "axios";
+import Axios from "axios"
 import allSource from "../../../../all.source";
-
+import allSourceKoordinator from "../../../../all.source_koordinator";
+import allSource_koordinator from "../../../../all.source_koordinator";
 export default {
     data() {
         return {
             Visibletambahdata: false,
             Visibledetaildata: false,
-            data_item: "Data Project Infra",
+            data_item: "Data Ticket",
+            detail_item: "DATA TICKET YANG HARUS DITANGANI",
             list_item: [],
             cari: '',
             current: 1,
             pageSize: 10,
             // CREATE DATA 
-            data: {
-                nama_project: '',
-                lokasi: '',
-                deskripsi: '',
-                status: ''
-            },
+            data: {},
             detaildata: {}
-        };
+        }
     },
     methods: {
         // Temp hapus data 
-        hapusdataproject(id) {
+        hapusdataticket(id) {
+            // alert(id)
             this.$swal.fire({
-                title: "Apakah Anda yakin?",
+                title: "Apakah anda yakin?",
                 icon: "warning",
                 showCancelButton: true,
-                confirmButtonText: "Hapus",
-                cancelButtonText: "Batal",
-                reverseButtons: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Ya"
             }).then((result) => {
-                if (result.isConfirmed) {
-                    this.deleteProject(id);
+                if (result.isDismissed) {
+                    this.$swal.fire({
+                        title: "Dibatalkan",
+                        text: "Anda telah membatalkan aksi",
+                        icon: "success"
+                    })
+                } else {
+                    Axios.put(allSource_koordinator.updateDataTicket + id, {
+                        Tr_task_status: "N"
+                    }).then((response) => {
+                        if (response.status = 200) {
+                            this.$swal.fire({
+                                title: "Berhasil!",
+                                text: "Data telah dihapus.",
+                                icon: "success"
+                            });
+                        } else {
+                            this.$swal.fire({
+                                title: "Gagal!",
+                                text: "Data gagal dihapus.",
+                                icon: "danger"
+                            });
+                        }
+                        this.getdata()
+                    })
                 }
             });
         },
-
-        // Detail Data 
-        detaildataproject(data) {
-            this.Visibledetaildata = true;
-            this.detaildata = { ...data };
+        // DETAIL DATA 
+        detaildatasupplier(items) {
+            this.Visibledetaildata = true
+            this.detaildata = items
         },
-
-        // Create Data 
+        // CREATE DATA 
         createData() {
-            Axios.post(`${allSource.apiBaseUrl}/project-infra`, this.data)
-                .then((response) => {
-                    this.$swal.fire({
-                        title: "Berhasil!",
-                        text: "Data Project Infra berhasil ditambahkan.",
-                        icon: "success",
-                        timer: 1500,
-                        showConfirmButton: false
-                    });
-                    this.fetchData();
-                    this.Visibletambahdata = false;
-                })
-                .catch((error) => {
-                    this.$swal.fire({
-                        title: "Gagal!",
-                        text: "Gagal menambahkan data Project Infra.",
-                        icon: "error",
-                        timer: 1500,
-                        showConfirmButton: false
-                    });
+            let newdata = {
+                Tr_task_kode: this.data.Tr_task_kode,
+                Tr_task_status: "Y",
+                Tr_task_domain: this.$store.getters.Auth_domain,
+                Tr_task_priority: this.data.Tr_task_priority,
+                Tr_task_kategori: "infra",
+                Tr_task_created: new Date().toISOString().slice(0, 10),
+                Tr_task_updated: new Date().toISOString().slice(0, 10),
+                Tr_task_detail: this.data.Tr_task_detail,
+                Tr_task_pic: this.data.Tr_task_pic,
+                // Tr_task_pegawai_list_penangan : this.data.Tr_task_pegawai_list_penangan
+            }
+            // Clear after modal box closed 
+            Axios.post(allSourceKoordinator.createDataTicket, newdata).then(() => {
+                this.$swal.fire({
+                    position: "center",
+                    icon: "success",
+                    title: "Data Berhasil Tersimpan",
+                    showConfirmButton: false,
+                    timer: 1500
                 });
+                this.Visibletambahdata = false;
+                this.data = {}
+                this.getdata()
+            }).catch((error) => {
+                console.log(error)
+            })
         },
-
-        // Delete Data 
-        deleteProject(id) {
-            Axios.delete(`${allSource.apiBaseUrl}/project-infra/${id}`)
-                .then((response) => {
-                    this.$swal.fire({
-                        title: "Berhasil!",
-                        text: "Data Project Infra berhasil dihapus.",
-                        icon: "success",
-                        timer: 1500,
-                        showConfirmButton: false
-                    });
-                    this.fetchData();
-                })
-                .catch((error) => {
-                    this.$swal.fire({
-                        title: "Gagal!",
-                        text: "Gagal menghapus data Project Infra.",
-                        icon: "error",
-                        timer: 1500,
-                        showConfirmButton: false
-                    });
-                });
+        // LIST DATA 
+        getdata() {
+            Axios.get(allSourceKoordinator.getDataTicket + this.$store.getters.Auth_domain).then((response) => {
+                this.list_item = response.data;
+                // console.log(response.data)
+                // alert(response.data)
+            })
         },
-
-        // Fetch Data 
-        fetchData() {
-            Axios.get(`${allSource.apiBaseUrl}/project-infra`)
-                .then((response) => {
-                    this.list_item = response.data;
-                })
-                .catch((error) => {
-                    console.error("Terjadi kesalahan saat mengambil data:", error);
-                });
-        },
-
-        // Pagination
+        // Pagination with computed 
         prev() {
-            if (this.current > 1) {
-                this.current--;
-                this.fetchData();
-            }
+            this.current--;
         },
-
         next() {
-            if (this.current * this.pageSize < this.list_item.length) {
-                this.current++;
-                this.fetchData();
-            }
-        }
-    },
-    computed: {
-        FilterPost() {
-            let start = (this.current - 1) * this.pageSize;
-            let end = start + this.pageSize;
-            return this.list_item.slice(start, end);
+            this.current++;
         }
     },
     created() {
-        this.fetchData();
+        this.getdata()
+    },
+    computed: {
+        // Pagination with computed 
+        indexStart() {
+            return (this.current - 1) * this.pageSize;
+        },
+        indexEnd() {
+            return this.indexStart + this.pageSize;
+        },
+        paginated() {
+            return this.list_item.slice(this.indexStart, this.indexEnd);
+        },
+        // ----
+        FilterPost: function () {
+            return this.paginated
+                .filter((item) => {
+                    // Cek apakah kategori adalah 'infra'
+                    var isInfraCategory = item.Tr_task_kategori.toLowerCase() === 'infra';
+        
+                    // Cek apakah kode mencocokkan pencarian
+                    var search_kode = item.Tr_task_kode.toLowerCase().includes(this.cari.toLowerCase());
+        
+                    // Hanya tampilkan jika kategori adalah 'infra' dan kode cocok dengan pencarian
+                    return isInfraCategory && search_kode;
+                });
+        }        
     }
-};
+}

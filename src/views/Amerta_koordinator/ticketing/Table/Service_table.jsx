@@ -1,6 +1,7 @@
 import Axios from "axios"
 import allSource from "../../../../all.source";
 import allSourceKoordinator from "../../../../all.source_koordinator";
+import allSource_koordinator from "../../../../all.source_koordinator";
 export default {
     data() {
         return {
@@ -19,7 +20,7 @@ export default {
     },
     methods: {
         // Temp hapus data 
-        hapusdatasupplier(id) {
+        hapusdataticket(id) {
             // alert(id)
             this.$swal.fire({
                 title: "Apakah anda yakin?",
@@ -36,8 +37,8 @@ export default {
                         icon: "success"
                     })
                 } else {
-                    Axios.put(allSource.updateDataSupplier + id, {
-                        master_supplier_status: "N"
+                    Axios.put(allSource_koordinator.updateDataTicket + id, {
+                        Tr_task_status: "N"
                     }).then((response) => {
                         if (response.status = 200) {
                             this.$swal.fire({
@@ -125,10 +126,10 @@ export default {
         // ----
         FilterPost: function () {
             return this.paginated.filter((item) => {
-                var search_nama = item.master_supplier_nama.toLowerCase().includes(this.cari.toLowerCase());
-                var search_toko = item.master_supplier_toko.toLowerCase().includes(this.cari.toLowerCase());
+                var search_kode = item.Tr_task_kode.toLowerCase().includes(this.cari.toLowerCase());
+                // var search_toko = item.master_supplier_toko.toLowerCase().includes(this.cari.toLowerCase());
 
-                return search_nama || search_toko;
+                return search_kode;
             });
         }
     }

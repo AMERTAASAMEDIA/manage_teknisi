@@ -60,8 +60,8 @@
                                         <CDropdownToggle color="secondary">Aksi</CDropdownToggle>
                                         <CDropdownMenu>
                                             <CDropdownItem @click="detaildatasupplier(items)">Detail</CDropdownItem>
-                                            <CDropdownItem><router-link :to="{name:'EditSupplier',params:{id:items._id}}">Edit</router-link></CDropdownItem>
-                                            <CDropdownItem @click="hapusdatasupplier(items._id)">Hapus</CDropdownItem>
+                                            <CDropdownItem><router-link :to="{name:'EditTicketing',params:{id:items._id}}">Edit</router-link></CDropdownItem>
+                                            <CDropdownItem @click="hapusdataticket(items._id)">Hapus</CDropdownItem>
                                         </CDropdownMenu>
                                     </CDropdown>
                                 </CTableDataCell>

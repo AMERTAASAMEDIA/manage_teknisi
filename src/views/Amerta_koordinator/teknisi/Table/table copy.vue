@@ -3,7 +3,7 @@
         <CCol :xs="12">
             <CCard class="mb-4">
                 <CCardHeader>
-                    <strong>Tabel</strong> <small>{{ data_item }}</small>
+                    <strong>Tabel Teknisi</strong> <small>{{ data_item }}</small>
                 </CCardHeader>
                 <CCardBody>
                     <p class="text-body-secondary small">
@@ -20,8 +20,7 @@
                 <CCardBody>
                     <CRow class="mb-6">
                         <div class="col-sm-2">
-                            <CButton color="primary" role="button" @click="() => { Visibletambahdata = true }">Tambah Data
-                            </CButton>
+                            <CButton color="primary" role="button" @click="() => { Visibletambahdata = true }">Tambah Data</CButton>
                             &nbsp;
                             <p></p>
                         </div>
@@ -35,34 +34,52 @@
                                 <CTableHeaderCell scope="col">No</CTableHeaderCell>
                                 <CTableHeaderCell scope="col">Nama</CTableHeaderCell>
                                 <CTableHeaderCell scope="col">ID</CTableHeaderCell>
+                                <CTableHeaderCell scope="col">Domain</CTableHeaderCell>
+                                <CTableHeaderCell scope="col">Status</CTableHeaderCell>
                                 <CTableHeaderCell scope="col">Alamat</CTableHeaderCell>
                                 <CTableHeaderCell scope="col">Role</CTableHeaderCell>
                                 <CTableHeaderCell scope="col">No Telepon</CTableHeaderCell>
                                 <CTableHeaderCell scope="col">Detail Identitas</CTableHeaderCell>
-                                <CTableHeaderCell scope="col">PIC </CTableHeaderCell>
+                                <CTableHeaderCell scope="col">Tanggal Pemasangan</CTableHeaderCell>
+                                <CTableHeaderCell scope="col">Tanggal Dibuat</CTableHeaderCell>
+                                <CTableHeaderCell scope="col">Tanggal Diupdate</CTableHeaderCell>
+                                <CTableHeaderCell scope="col">User Diupdate</CTableHeaderCell>
+                                <CTableHeaderCell scope="col">Tipe Pelanggan</CTableHeaderCell>
+                                <CTableHeaderCell scope="col">PIC PSB</CTableHeaderCell>
                                 <CTableHeaderCell scope="col">#</CTableHeaderCell>
                             </CTableRow>
                         </CTableHead>
                         <CTableBody>
-                            <CTableRow v-for="(items, index) in FilterPost" :key="items._id">
+                            <CTableRow v-for="(item, index) in FilterPost" :key="item.master_pengguna_id">
                                 <CTableHeaderCell scope="row">{{ index + 1 }}</CTableHeaderCell>
-                                <CTableDataCell>{{ items.master_pengguna_nama }}</CTableDataCell>
-                                <CTableDataCell>{{ items.master_pengguna_id }}</CTableDataCell>
-                                <CTableDataCell>{{ items.master_pengguna_alamat }}</CTableDataCell>
-                                <CTableDataCell>{{ items.master_pengguna_role }}</CTableDataCell>
-                                <CTableDataCell>{{ items.master_pengguna_no_telepon }}</CTableDataCell>
+                                <CTableDataCell>{{ item.master_pengguna_nama }}</CTableDataCell>
+                                <CTableDataCell>{{ item.master_pengguna_id }}</CTableDataCell>
+                                <CTableDataCell>{{ item.master_pengguna_domain }}</CTableDataCell>
+                                <CTableDataCell>{{ item.master_pengguna_status }}</CTableDataCell>
+                                <CTableDataCell>{{ item.master_pengguna_alamat }}</CTableDataCell>
+                                <CTableDataCell>{{ item.master_pengguna_role }}</CTableDataCell>
+                                <CTableDataCell>{{ item.master_pengguna_no_telepon }}</CTableDataCell>
                                 <CTableDataCell>
-                                    KTP: {{ items.master_pengguna_detail_identitas.master_pengguna_detail_identitas_ktp }}, 
-                                    NPWP: {{ items.master_pengguna_detail_identitas.master_pengguna_detail_identitas_npwp }}
+                                    KTP: {{ item.master_pengguna_detail_identitas.master_pengguna_detail_identitas_ktp }}, 
+                                    NPWP: {{ item.master_pengguna_detail_identitas.master_pengguna_detail_identitas_npwp }}
                                 </CTableDataCell>
-                                <CTableDataCell>{{ items.master_pengguna_pic }}</CTableDataCell>
+                                <CTableDataCell>{{ item.master_pengguna_tanggal_pemasangan }}</CTableDataCell>
+                                <CTableDataCell>{{ item.master_pengguna_created }}</CTableDataCell>
+                                <CTableDataCell>{{ item.master_pengguna_updated }}</CTableDataCell>
+                                <CTableDataCell>{{ item.master_pengguna_user_updated }}</CTableDataCell>
+                                <CTableDataCell>{{ item.master_pengguna_tipe_pelanggan }}</CTableDataCell>
+                                <CTableDataCell>
+                                    <ul>
+                                        <li v-for="pic in item.master_pengguna_pic_psb" :key="pic">{{ pic }}</li>
+                                    </ul>
+                                </CTableDataCell>
                                 <CTableDataCell>
                                     <CDropdown>
                                         <CDropdownToggle color="secondary">Aksi</CDropdownToggle>
                                         <CDropdownMenu>
-                                            <CDropdownItem @click="detaildatasupplier(items)">Detail</CDropdownItem>
-                                            <CDropdownItem><router-link :to="{name:'EditTeknisi',params:{id:items._id}}">Edit</router-link></CDropdownItem>
-                                            <CDropdownItem @click="hapusdataticket(items._id)">Hapus</CDropdownItem>
+                                            <CDropdownItem @click="detaildatateknisi(item)">Detail</CDropdownItem>
+                                            <CDropdownItem><router-link :to="{name:'EditTechnician', params:{id: item.master_pengguna_id}}">Edit</router-link></CDropdownItem>
+                                            <CDropdownItem @click="hapusteknisi(item.master_pengguna_id)">Hapus</CDropdownItem>
                                         </CDropdownMenu>
                                     </CDropdown>
                                 </CTableDataCell>
@@ -79,10 +96,10 @@
                 </CCardBody>
             </CCard>
         </CCol>
-        <!-- modal tambah data  -->
+        <!-- modal tambah data -->
         <CModal :visible="Visibletambahdata" @close="() => { Visibletambahdata = false }" aria-labelledby="LiveDemoExampleLabel">
             <CModalHeader>
-                <CModalTitle id="LiveDemoExampleLabel">Tambahkan {{ data_item }}</CModalTitle>
+                <CModalTitle id="LiveDemoExampleLabel">Tambahkan Teknisi</CModalTitle>
             </CModalHeader>
             <CModalBody>
                 <CForm class="row g-4">
@@ -99,6 +116,22 @@
                     </div>
                     <div class="col-auto">
                         <CFormInput type="text" placeholder="ID" v-model="data.master_pengguna_id" />
+                    </div>
+                    <!-- Domain -->
+                    <div class="col-auto">
+                        <CFormInput type="text" value="Domain" readonly plain-text />
+                    </div>
+                    <div class="col-auto">
+                        <CFormInput type="text" placeholder="Domain" v-model="data.master_pengguna_domain" />
+                    </div>
+                    <!-- Status -->
+                    <div class="col-auto">
+                        <CFormInput type="text" value="Status" readonly plain-text />
+                    </div>
+                    <div class="col-auto">
+                        <CFormSelect aria-label="Default select example" v-model="data.master_pengguna_status">
+                            <option value="Y">Y</option>
+                        </CFormSelect>
                     </div>
                     <!-- Alamat -->
                     <div class="col-auto">
@@ -126,96 +159,66 @@
                         <CFormInput type="text" value="KTP" readonly plain-text />
                     </div>
                     <div class="col-auto">
-                        <CFormInput type="text" placeholder="KTP" v-model="data.master_pengguna_detail_identitas_ktp" />
+                        <CFormInput type="text" placeholder="KTP" v-model="data.master_pengguna_detail_identitas.ktp" />
                     </div>
                     <div class="col-auto">
                         <CFormInput type="text" value="NPWP" readonly plain-text />
                     </div>
                     <div class="col-auto">
-                        <CFormInput type="text" placeholder="NPWP" v-model="data.master_pengguna_detail_identitas_npwp" />
+                        <CFormInput type="text" placeholder="NPWP" v-model="data.master_pengguna_detail_identitas.npwp" />
                     </div>
-                    <!-- PIC -->
+                    <!-- Tanggal Pemasangan -->
                     <div class="col-auto">
-                        <CFormInput type="text" value="PIC" readonly plain-text />
+                        <CFormInput type="text" value="Tanggal Pemasangan" readonly plain-text />
                     </div>
                     <div class="col-auto">
-                        <CFormInput type="text" placeholder="PIC" v-model="data.master_pengguna_pic_psb" />
+                        <CFormInput type="text" placeholder="Tanggal Pemasangan" v-model="data.master_pengguna_tanggal_pemasangan" />
+                    </div>
+                    <!-- Tanggal Dibuat -->
+                    <div class="col-auto">
+                        <CFormInput type="text" value="Tanggal Dibuat" readonly plain-text />
+                    </div>
+                    <div class="col-auto">
+                        <CFormInput type="text" placeholder="Tanggal Dibuat" v-model="data.master_pengguna_created" />
+                    </div>
+                    <!-- Tanggal Diupdate -->
+                    <div class="col-auto">
+                        <CFormInput type="text" value="Tanggal Diupdate" readonly plain-text />
+                    </div>
+                    <div class="col-auto">
+                        <CFormInput type="text" placeholder="Tanggal Diupdate" v-model="data.master_pengguna_updated" />
+                    </div>
+                    <!-- User Diupdate -->
+                    <div class="col-auto">
+                        <CFormInput type="text" value="User Diupdate" readonly plain-text />
+                    </div>
+                    <div class="col-auto">
+                        <CFormInput type="text" placeholder="User Diupdate" v-model="data.master_pengguna_user_updated" />
+                    </div>
+                    <!-- Tipe Pelanggan -->
+                    <div class="col-auto">
+                        <CFormInput type="text" value="Tipe Pelanggan" readonly plain-text />
+                    </div>
+                    <div class="col-auto">
+                        <CFormSelect aria-label="Default select example" v-model="data.master_pengguna_tipe_pelanggan">
+                            <option value="personal">Personal</option>
+                            <option value="corporate">Corporate</option>
+                        </CFormSelect>
+                    </div>
+                    <!-- PIC PSB -->
+                    <div class="col-auto">
+                        <CFormInput type="text" value="PIC PSB" readonly plain-text />
+                    </div>
+                    <div class="col-auto">
+                        <CFormInput type="text" placeholder="PIC PSB" v-model="data.master_pengguna_pic_psb" />
                     </div>
                 </CForm>
             </CModalBody>
             <CModalFooter>
-                <CButton color="secondary" @click="() => { Visibletambahdata = false }">
-                    Tutup
-                </CButton>
-                <CButton color="primary" @click.prevent="createData()">Tambahkan</CButton>
+                <CButton color="secondary" @click="() => { Visibletambahdata = false }">Tutup</CButton>
+                <CButton color="primary" @click="submitData">Simpan</CButton>
             </CModalFooter>
         </CModal>
-        <!-- ---- -->
-        <!-- Modal Detail Data  -->
-        <CModal :visible="Visibledetaildata" @close="() => { Visibledetaildata = false }" aria-labelledby="LiveDemoExampleLabel">
-            <CModalHeader>
-                <CModalTitle id="LiveDemoExampleLabel">Detail Data</CModalTitle>
-            </CModalHeader>
-            <CModalBody>
-                <CForm class="row g-4">
-                    <!-- Kode -->
-                    <div class="col-auto">
-                        <CFormInput type="text" value="Kode" readonly plain-text />
-                    </div>
-                    <div class="col-auto">
-                        <CFormInput type="text" v-model="detaildata.Tr_task_kode" readonly />
-                    </div>
-                    <!-- Status -->
-                    <div class="col-auto">
-                        <CFormInput type="text" value="Status" readonly plain-text />
-                    </div>
-                    <div class="col-auto">
-                        <CFormInput type="text" v-model="detaildata.Tr_task_status" readonly />
-                    </div>
-                    <!-- Prioritas -->
-                    <div class="col-auto">
-                        <CFormInput type="text" value="Prioritas" readonly plain-text />
-                    </div>
-                    <div class="col-auto">
-                        <CFormInput type="text" v-model="detaildata.Tr_task_priority" readonly />
-                    </div>
-                    <!-- Kategori -->
-                    <div class="col-auto">
-                        <CFormInput type="text" value="Kategori" readonly plain-text />
-                    </div>
-                    <div class="col-auto">
-                        <CFormInput type="text" v-model="detaildata.Tr_task_kategori" readonly />
-                    </div>
-                    <!-- Tanggal -->
-                    <div class="col-auto">
-                        <CFormInput type="date" value="Tanggal" readonly plain-text />
-                    </div>
-                    <div class="col-auto">
-                        <CFormInput type="date" v-model="detaildata.Tr_task_created" readonly />
-                    </div>
-                    <!-- Detail -->
-                    <div class="col-auto">
-                        <CFormInput type="text" value="Detail" readonly plain-text />
-                    </div>
-                    <div class="col-auto">
-                        <CFormInput type="text" v-model="detaildata.Tr_task_detail" readonly />
-                    </div>
-                    <!-- Pegawai -->
-                    <div class="col-auto">
-                        <CFormInput type="text" value="Pegawai" readonly plain-text />
-                    </div>
-                    <div class="col-auto">
-                        <CFormInput type="text" v-model="detaildata.Tr_task_pegawai_list_penangan" readonly />
-                    </div>
-                </CForm>
-            </CModalBody>
-            <CModalFooter>
-                <CButton color="secondary" @click="() => { Visibledetaildata = false }">
-                    Tutup
-                </CButton>
-            </CModalFooter>
-        </CModal>
-        <!-- ---- -->
     </CRow>
 </template>
 <script src="./Service_table.jsx"></script>
