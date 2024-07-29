@@ -17,7 +17,7 @@ export default {
             this.$router.go(-1)
         },
         getDetailData() {
-            Axios.get(allSource_koordinator.getDetailTeknisi + this.$route.params.id)
+            Axios.get(allSource_koordinator.getDetailTicket + this.$route.params.id)
                 .then((response) => {
                     this.detaildata = response.data
                     console.log(response.data)
@@ -39,10 +39,10 @@ export default {
                     text: "Perubahan Telah tersimpan",
                     icon: "success"
                 });
-                Axios.put(allSource_koordinator.updateDataTeknisi + this.$route.params.id, this.detaildata)
+                Axios.put(allSource_koordinator.updateDataTicket + this.$route.params.id, this.detaildata)
                     .then((response) => {
                         this.getDetailData()
-                        this.$router.push('/teknisi')
+                        this.$router.push('/ticketing')
                     }).catch((error) => {
                         this.$swal.fire({
                             icon: "error",

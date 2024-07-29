@@ -12,6 +12,18 @@
                             <CFormInput type="text" v-model="detaildata.Tr_task_kode" readonly />
                         </div>
                         <div class="mb-3">
+                            <CFormLabel>Nama Pelanggan</CFormLabel>
+                            <CFormInput type="text" v-model="detaildata.Tr_task_nama" />
+                        </div>
+                        <div class="mb-3">
+                            <CFormLabel>No Telepon Pelanggan</CFormLabel>
+                            <CFormInput type="text" v-model="detaildata.Tr_task_no_telepon" />
+                        </div>
+                        <div class="mb-3">
+                            <CFormLabel>Alamat Pelanggan</CFormLabel>
+                            <CFormInput type="text" v-model="detaildata.Tr_task_alamat" />
+                        </div>
+                        <div class="mb-3">
                             <CFormLabel>Prioritas</CFormLabel>
                             <CFormSelect aria-label="Default select example" v-model="detaildata.Tr_task_priority">
                             <option>Pilih Tingkat Prioritas</option>
@@ -44,7 +56,7 @@
                         <CButton color="primary" @click.prevent="UpdateDetailData()">Konfirmasi</CButton> &nbsp;
                         <!-- <CButton color="secondary" @click="$router.go(-1)">Kembali</CButton> &nbsp; -->
                         <!-- <CButton color="secondary" :to="{name:'Supplier'}">Kembali</CButton> &nbsp; -->
-                        <router-link :to="{name:'Supplier'}" tag="button" color="secondary"><CButton color="secondary">Kembali</CButton></router-link>
+                        <router-link :to="{name:'Ticketing'}" tag="button" color="secondary"><CButton color="secondary">Kembali</CButton></router-link>
                     </CForm>
                 </CCardBody>
             </CCard>

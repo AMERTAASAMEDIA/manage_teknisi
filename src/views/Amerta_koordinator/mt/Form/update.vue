@@ -54,5 +54,5 @@
         </CCol>
     </CRow>
 </template>
-<script src="./Service/edit_infra"></script>
+<script src="./Service/edit_mt"></script>
   

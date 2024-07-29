@@ -55,7 +55,7 @@
                                     KTP: {{ items.master_pengguna_detail_identitas.master_pengguna_detail_identitas_ktp }}, 
                                     NPWP: {{ items.master_pengguna_detail_identitas.master_pengguna_detail_identitas_npwp }}
                                 </CTableDataCell>
-                                <CTableDataCell>{{ items.master_pengguna_pic }}</CTableDataCell>
+                                <CTableDataCell>{{ items.master_pengguna_pic_psb}}</CTableDataCell>
                                 <CTableDataCell>
                                     <CDropdown>
                                         <CDropdownToggle color="secondary">Aksi</CDropdownToggle>

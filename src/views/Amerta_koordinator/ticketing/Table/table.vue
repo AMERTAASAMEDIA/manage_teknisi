@@ -33,12 +33,12 @@
                         <CTableHead>
                             <CTableRow>
                                 <CTableHeaderCell scope="col">No</CTableHeaderCell>
-                                <CTableHeaderCell scope="col">Kode</CTableHeaderCell>
-                                <CTableHeaderCell scope="col">Status</CTableHeaderCell>
+                                <CTableHeaderCell scope="col">Nama Pelanggan</CTableHeaderCell>
+                                <CTableHeaderCell scope="col">No Telepon Pelanggan</CTableHeaderCell>
+                                <CTableHeaderCell scope="col">Alamat Pelanggan</CTableHeaderCell>
                                 <CTableHeaderCell scope="col">Prioritas</CTableHeaderCell>
                                 <CTableHeaderCell scope="col">Kategori</CTableHeaderCell>
                                 <CTableHeaderCell scope="col">Tanggal</CTableHeaderCell>
-                                <CTableHeaderCell scope="col">Detail</CTableHeaderCell>
                                 <CTableHeaderCell scope="col">Pic</CTableHeaderCell>
                                 <!-- <CTableHeaderCell scope="col">Pegawai</CTableHeaderCell> -->
                                 <CTableHeaderCell scope="col">#</CTableHeaderCell>
@@ -47,12 +47,12 @@
                         <CTableBody>
                             <CTableRow v-for="(items, index) in FilterPost" :key="items._id">
                                 <CTableHeaderCell scope="row">{{ index + 1 }}</CTableHeaderCell>
-                                <CTableDataCell>{{ items.Tr_task_kode }}</CTableDataCell>
-                                <CTableDataCell>{{ items.Tr_task_status }}</CTableDataCell>
+                                <CTableDataCell>{{ items.Tr_task_nama }}</CTableDataCell>
+                                <CTableDataCell>{{ items.Tr_task_no_telepon }}</CTableDataCell>
+                                <CTableDataCell>{{ items.Tr_task_alamat }}</CTableDataCell>
                                 <CTableDataCell>{{ items.Tr_task_priority }}</CTableDataCell>
                                 <CTableDataCell>{{ items.Tr_task_kategori }}</CTableDataCell>
                                 <CTableDataCell>{{ items.Tr_task_created }}</CTableDataCell>
-                                <CTableDataCell>{{ items.Tr_task_detail }}</CTableDataCell>
                                 <CTableDataCell>{{ items.Tr_task_pic }}</CTableDataCell>
                                 <!-- <CTableDataCell>{{ items.Tr_task_pegawai_list_penangan }}</CTableDataCell> -->
                                 <CTableDataCell>
@@ -61,6 +61,7 @@
                                         <CDropdownMenu>
                                             <CDropdownItem @click="detaildatasupplier(items)">Detail</CDropdownItem>
                                             <CDropdownItem><router-link :to="{name:'EditTicketing',params:{id:items._id}}">Edit</router-link></CDropdownItem>
+                                            <CDropdownItem><router-link :to="{name:'PengerjaanTicketing',params:{id:items._id}}">Pengerjaan</router-link></CDropdownItem>
                                             <CDropdownItem @click="hapusdataticket(items._id)">Hapus</CDropdownItem>
                                         </CDropdownMenu>
                                     </CDropdown>
@@ -91,6 +92,27 @@
                     </div>
                     <div class="col-auto">
                         <CFormInput type="text" placeholder="Kode" v-model="data.Tr_task_kode" />
+                    </div>
+                    <!-- Nama -->
+                    <div class="col-auto">
+                        <CFormInput type="text" value="Nama Pelanggan" readonly plain-text />
+                    </div>
+                    <div class="col-auto">
+                        <CFormInput type="text" placeholder="Nama Pelanggan" v-model="data.Tr_task_nama" />
+                    </div>
+                    <!-- No Telepon -->
+                    <div class="col-auto">
+                        <CFormInput type="text" value="No Telepon Pelanggan" readonly plain-text />
+                    </div>
+                    <div class="col-auto">
+                        <CFormInput type="text" placeholder="No Telepon Pelanggan" v-model="data.Tr_task_no_telepon" />
+                    </div>
+                    <!-- Alamat -->
+                    <div class="col-auto">
+                        <CFormInput type="text" value="Alamat Pelanggan" readonly plain-text />
+                    </div>
+                    <div class="col-auto">
+                        <CFormInput type="text" placeholder="Alamat Pelanggan" v-model="data.Tr_task_alamat" />
                     </div>
                     <!-- Prioritas -->
                     <div class="col-auto">

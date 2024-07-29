@@ -58,45 +58,6 @@ export default {
                 }
             });
         },
-        // Temp hapus data 
-        progressdataticket(id) {
-            // alert(id)
-            this.$swal.fire({
-                title: "Apakah anda yakin?",
-                icon: "warning",
-                showCancelButton: true,
-                confirmButtonColor: "#3085d6",
-                cancelButtonColor: "#d33",
-                confirmButtonText: "Ya"
-            }).then((result) => {
-                if (result.isDismissed) {
-                    this.$swal.fire({
-                        title: "Dibatalkan",
-                        text: "Anda telah membatalkan aksi",
-                        icon: "success"
-                    })
-                } else {
-                    Axios.put(allSource_koordinator.updateDataTicket + id, {
-                        Tr_task_status: "N"
-                    }).then((response) => {
-                        if (response.status = 200) {
-                            this.$swal.fire({
-                                title: "Berhasil!",
-                                text: "Data telah dihapus.",
-                                icon: "success"
-                            });
-                        } else {
-                            this.$swal.fire({
-                                title: "Gagal!",
-                                text: "Data gagal dihapus.",
-                                icon: "danger"
-                            });
-                        }
-                        this.getdata()
-                    })
-                }
-            });
-        },
         // DETAIL DATA 
         detaildatasupplier(items) {
             this.Visibledetaildata = true
@@ -112,12 +73,12 @@ export default {
                 Tr_task_no_telepon : this.data.Tr_task_no_telepon,
                 Tr_task_alamat : this.data.Tr_task_alamat,
                 Tr_task_priority: this.data.Tr_task_priority,
-                Tr_task_kategori: this.data.Tr_task_kategori,
+                Tr_task_kategori: "mt",
                 Tr_task_created: new Date().toISOString().slice(0, 10),
                 Tr_task_updated: new Date().toISOString().slice(0, 10),
                 Tr_task_detail: this.data.Tr_task_detail,
                 Tr_task_pic: this.data.Tr_task_pic,
-                Tr_task_pegawai_list_penangan : this.data.Tr_task_pegawai_list_penangan
+                // Tr_task_pegawai_list_penangan : this.data.Tr_task_pegawai_list_penangan
             }
             // Clear after modal box closed 
             Axios.post(allSourceKoordinator.createDataTicket, newdata).then(() => {
@@ -167,12 +128,17 @@ export default {
         },
         // ----
         FilterPost: function () {
-            return this.paginated.filter((item) => {
-                var search_kode = item.Tr_task_kode.toLowerCase().includes(this.cari.toLowerCase());
-                // var search_toko = item.master_supplier_toko.toLowerCase().includes(this.cari.toLowerCase());
-
-                return search_kode;
-            });
-        }
+            return this.paginated
+                .filter((item) => {
+                    // Cek apakah kategori adalah 'infra'
+                    var isInfraCategory = item.Tr_task_kategori.toLowerCase() === 'mt';
+        
+                    // Cek apakah kode mencocokkan pencarian
+                    var search_kode = item.Tr_task_kode.toLowerCase().includes(this.cari.toLowerCase());
+        
+                    // Hanya tampilkan jika kategori adalah 'infra' dan kode cocok dengan pencarian
+                    return isInfraCategory && search_kode;
+                });
+        }        
     }
 }

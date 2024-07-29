@@ -8,43 +8,42 @@
                 <CCardBody>
                     <CForm>
                         <div class="mb-3">
-                            <CFormLabel>Kode</CFormLabel>
-                            <CFormInput type="text" v-model="detaildata.Tr_task_kode" readonly />
+                            <CFormLabel>Nama</CFormLabel>
+                            <CFormInput type="text" v-model="detaildata.master_pengguna_nama" />
                         </div>
                         <div class="mb-3">
-                            <CFormLabel>Prioritas</CFormLabel>
-                            <CFormSelect aria-label="Default select example" v-model="detaildata.Tr_task_priority">
-                            <option>Pilih Tingkat Prioritas</option>
-                            <option value="high">High</option>
-                            <option value="decent">Decent</option>
-                            <option value="light">Light</option>
-                            </CFormSelect>
+                            <CFormLabel>ID</CFormLabel>
+                            <CFormInput type="text" v-model="detaildata.master_pengguna_id" readonly />
                         </div>
                         <div class="mb-3">
-                            <CFormLabel>Kategori</CFormLabel>
-                            <CFormSelect aria-label="Default select example" v-model="detaildata.Tr_task_kategori">
-                            <option>Pilih Kategori Ticketing</option>
-                            <option value="psb">PSB</option>
-                            <option value="infra">Infra</option>
-                            <option value="mt">MT</option>
-                            </CFormSelect>
+                            <CFormLabel>Alamat</CFormLabel>
+                            <CFormInput type="text" v-model="detaildata.master_pengguna_alamat" />
                         </div>
                         <div class="mb-3">
-                            <CFormLabel>Tanggal</CFormLabel>
-                            <CFormInput type="date" placeholder="Tanggal" v-model="detaildata.Tr_task_created" />
+                            <CFormLabel>Role</CFormLabel>
+                            <CFormInput type="text" v-model="detaildata.master_pengguna_role" />
                         </div>
                         <div class="mb-3">
-                            <CFormLabel>Detail</CFormLabel>
-                            <CFormInput type="text" placeholder="Detail" v-model="detaildata.Tr_task_detail" />
+                            <CFormLabel>No Telepon</CFormLabel>
+                            <CFormInput type="text" v-model="detaildata.master_pengguna_no_telepon"  />
+                        </div>
+                        <!-- Detail Identitas -->
+                        <div class="mb-3">
+                            <CFormLabel>KTP</CFormLabel>
+                            <CFormInput type="text" v-model="detaildata.master_pengguna_detail_identitas_ktp"  />
+                        </div>
+                        <div class="mb-3">
+                            <CFormLabel>NPWP</CFormLabel>
+                            <CFormInput type="text" v-model="detaildata.master_pengguna_detail_identitas_npwp"  />
                         </div>
                         <div class="mb-3">
                             <CFormLabel>PIC</CFormLabel>
-                            <CFormInput type="text" placeholder="Pic" v-model="detaildata.Tr_task_pic" />
+                            <CFormInput type="text" placeholder="Pic" v-model="detaildata.master_pengguna_pic_psb" />
                         </div>
                         <CButton color="primary" @click.prevent="UpdateDetailData()">Konfirmasi</CButton> &nbsp;
                         <!-- <CButton color="secondary" @click="$router.go(-1)">Kembali</CButton> &nbsp; -->
                         <!-- <CButton color="secondary" :to="{name:'Supplier'}">Kembali</CButton> &nbsp; -->
-                        <router-link :to="{name:'Supplier'}" tag="button" color="secondary"><CButton color="secondary">Kembali</CButton></router-link>
+                        <router-link :to="{name:'Teknisi'}" tag="button" color="secondary"><CButton color="secondary">Kembali</CButton></router-link>
                     </CForm>
                 </CCardBody>
             </CCard>

@@ -117,6 +117,20 @@ const routes = [{
                     import ('@/views/Amerta_koordinator/project_infra/Table/table.vue'),
                 // redirect: '/item',
             },
+            {
+                path: '/psb',
+                name: 'PSB',
+                component: () =>
+                    import ('@/views/Amerta_koordinator/psb/Table/table.vue'),
+                // redirect: '/item',
+            },
+            {
+                path: '/maintenance',
+                name: 'Maintenance',
+                component: () =>
+                    import ('@/views/Amerta_koordinator/mt/Table/table.vue'),
+                // redirect: '/item',
+            },
             // {
             //     path: '/edit-supplier/:id',
             //     name: 'EditSupplier',
@@ -132,10 +146,24 @@ const routes = [{
                 // redirect: '/item',
             },
             {
+                path: '/pengerjaan-ticketing/:id',
+                name: 'PengerjaanTicketing',
+                component: () =>
+                    import ('@/views/Amerta_koordinator/ticketing/Form/pengerjaan.vue'),
+                // redirect: '/item',
+            },
+            {
                 path: '/edit-infra/:id',
                 name: 'EditInfra',
                 component: () =>
                     import ('@/views/Amerta_koordinator/project_infra/Form/update.vue'),
+                // redirect: '/item',
+            },
+            {
+                path: '/edit-teknisi/:id',
+                name: 'EditTeknisi',
+                component: () =>
+                    import ('@/views/Amerta_koordinator/teknisi/Form/update.vue'),
                 // redirect: '/item',
             },
             {
