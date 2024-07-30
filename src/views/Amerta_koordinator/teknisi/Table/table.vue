@@ -7,8 +7,7 @@
                 </CCardHeader>
                 <CCardBody>
                     <p class="text-body-secondary small">
-                        DATA TEKNISI YANG BEKERJA DENGAN AMERTA ASA MEDIA.
-                        {{ this.$store.getters.Auth_name }}
+                        {{ detail_item }}
                     </p>
                 </CCardBody>
             </CCard>
@@ -16,14 +15,17 @@
         <CCol :xs="12">
             <CCard class="mb-4">
                 <CCardHeader>
-                    <strong>Data Teknisi</strong> <small>#</small>
+                    <strong>{{ data_item }}</strong> <small>#</small>
                 </CCardHeader>
                 <CCardBody>
                     <CRow class="mb-6">
                         <div class="col-sm-2">
-                            <CButton color="primary" role="button" @click="() => { Visibletambahdata = true }">Tambah Data</CButton>
+                            <CButton color="primary" role="button" @click="() => { Visibletambahdata = true }">Tambah Data
+                            </CButton>
+                            &nbsp;
+                            <p></p>
                         </div>
-                        <div class="col-sm-5">
+                        <div class="col-sm-5" style="right: -40%;">
                             <CFormInput type="text" v-model="cari" placeholder="Cari" />
                         </div>
                     </CRow>
@@ -32,26 +34,35 @@
                             <CTableRow>
                                 <CTableHeaderCell scope="col">No</CTableHeaderCell>
                                 <CTableHeaderCell scope="col">Nama</CTableHeaderCell>
+                                <CTableHeaderCell scope="col">ID</CTableHeaderCell>
                                 <CTableHeaderCell scope="col">Alamat</CTableHeaderCell>
-                                <CTableHeaderCell scope="col">Spesialisasi</CTableHeaderCell>
-                                <CTableHeaderCell scope="col">No.Telepon</CTableHeaderCell>
+                                <CTableHeaderCell scope="col">Role</CTableHeaderCell>
+                                <CTableHeaderCell scope="col">No Telepon</CTableHeaderCell>
+                                <CTableHeaderCell scope="col">Detail Identitas</CTableHeaderCell>
+                                <CTableHeaderCell scope="col">PIC </CTableHeaderCell>
                                 <CTableHeaderCell scope="col">#</CTableHeaderCell>
                             </CTableRow>
                         </CTableHead>
                         <CTableBody>
                             <CTableRow v-for="(items, index) in FilterPost" :key="items._id">
                                 <CTableHeaderCell scope="row">{{ index + 1 }}</CTableHeaderCell>
-                                <CTableDataCell>{{ items.nama_teknisi }}</CTableDataCell>
-                                <CTableDataCell>{{ items.alamat_teknisi }}</CTableDataCell>
-                                <CTableDataCell>{{ items.spesialisasi }}</CTableDataCell>
-                                <CTableDataCell>{{ items.no_telepon_teknisi }}</CTableDataCell>
+                                <CTableDataCell>{{ items.master_pengguna_nama }}</CTableDataCell>
+                                <CTableDataCell>{{ items.master_pengguna_id }}</CTableDataCell>
+                                <CTableDataCell>{{ items.master_pengguna_alamat }}</CTableDataCell>
+                                <CTableDataCell>{{ items.master_pengguna_role }}</CTableDataCell>
+                                <CTableDataCell>{{ items.master_pengguna_no_telepon }}</CTableDataCell>
+                                <CTableDataCell>
+                                    KTP: {{ items.master_pengguna_detail_identitas.master_pengguna_detail_identitas_ktp }}, 
+                                    NPWP: {{ items.master_pengguna_detail_identitas.master_pengguna_detail_identitas_npwp }}
+                                </CTableDataCell>
+                                <CTableDataCell>{{ items.master_pengguna_pic_psb}}</CTableDataCell>
                                 <CTableDataCell>
                                     <CDropdown>
                                         <CDropdownToggle color="secondary">Aksi</CDropdownToggle>
                                         <CDropdownMenu>
-                                            <CDropdownItem @click="detaildatateknisi(items)">Detail</CDropdownItem>
+                                            <CDropdownItem @click="detaildatasupplier(items)">Detail</CDropdownItem>
                                             <CDropdownItem><router-link :to="{name:'EditTeknisi',params:{id:items._id}}">Edit</router-link></CDropdownItem>
-                                            <CDropdownItem @click="hapusdatateknisi(items._id)">Hapus</CDropdownItem>
+                                            <CDropdownItem @click="hapusdataticket(items._id)">Hapus</CDropdownItem>
                                         </CDropdownMenu>
                                     </CDropdown>
                                 </CTableDataCell>
@@ -71,86 +82,141 @@
         <!-- modal tambah data  -->
         <CModal :visible="Visibletambahdata" @close="() => { Visibletambahdata = false }" aria-labelledby="LiveDemoExampleLabel">
             <CModalHeader>
-                <CModalTitle id="LiveDemoExampleLabel">Tambahkan Data Teknisi</CModalTitle>
+                <CModalTitle id="LiveDemoExampleLabel">Tambahkan {{ data_item }}</CModalTitle>
             </CModalHeader>
             <CModalBody>
                 <CForm class="row g-4">
-                    <!-- Nama Teknisi  -->
+                    <!-- Nama -->
                     <div class="col-auto">
-                        <CFormInput type="text" value="Nama Teknisi" readonly plain-text />
+                        <CFormInput type="text" value="Nama" readonly plain-text />
                     </div>
                     <div class="col-auto">
-                        <CFormInput type="text" placeholder="Nama" v-model="data.nama_teknisi" />
+                        <CFormInput type="text" placeholder="Nama" v-model="data.master_pengguna_nama" />
                     </div>
-                    <!-- Alamat Teknisi -->
+                    <!-- ID -->
                     <div class="col-auto">
-                        <CFormInput type="text" value="Alamat Teknisi" readonly plain-text />
-                    </div>
-                    <div class="col-auto">
-                        <textarea class="form-control" v-model="data.alamat_teknisi"></textarea>
-                    </div>
-                    <!-- Spesialisasi Teknisi  -->
-                    <div class="col-auto">
-                        <CFormInput type="text" value="Spesialisasi" readonly plain-text />
+                        <CFormInput type="text" value="ID" readonly plain-text />
                     </div>
                     <div class="col-auto">
-                        <CFormInput type="text" placeholder="Spesialisasi" v-model="data.spesialisasi" />
+                        <CFormInput type="text" placeholder="ID" v-model="data.master_pengguna_id" />
                     </div>
-                    <!-- Telepon Teknisi  -->
+                    <!-- Alamat -->
                     <div class="col-auto">
-                        <CFormInput type="text" value="No.Telepon" readonly plain-text />
+                        <CFormInput type="text" value="Alamat" readonly plain-text />
                     </div>
                     <div class="col-auto">
-                        <CFormInput type="text" v-model="data.no_telepon_teknisi" />
+                        <CFormInput type="text" placeholder="Alamat" v-model="data.master_pengguna_alamat" />
+                    </div>
+                    <!-- Role -->
+                    <div class="col-auto">
+                        <CFormInput type="text" value="Role" readonly plain-text />
+                    </div>
+                    <div class="col-auto">
+                        <CFormInput type="text" placeholder="Role" v-model="data.master_pengguna_role" />
+                    </div>
+                    <!-- No Telepon -->
+                    <div class="col-auto">
+                        <CFormInput type="text" value="No Telepon" readonly plain-text />
+                    </div>
+                    <div class="col-auto">
+                        <CFormInput type="text" placeholder="No Telepon" v-model="data.master_pengguna_no_telepon" />
+                    </div>
+                    <!-- Detail Identitas -->
+                    <div class="col-auto">
+                        <CFormInput type="text" value="KTP" readonly plain-text />
+                    </div>
+                    <div class="col-auto">
+                        <CFormInput type="text" placeholder="KTP" v-model="data.master_pengguna_detail_identitas_ktp" />
+                    </div>
+                    <div class="col-auto">
+                        <CFormInput type="text" value="NPWP" readonly plain-text />
+                    </div>
+                    <div class="col-auto">
+                        <CFormInput type="text" placeholder="NPWP" v-model="data.master_pengguna_detail_identitas_npwp" />
+                    </div>
+                    <!-- PIC -->
+                    <div class="col-auto">
+                        <CFormInput type="text" value="PIC" readonly plain-text />
+                    </div>
+                    <div class="col-auto">
+                        <CFormInput type="text" placeholder="PIC" v-model="data.master_pengguna_pic_psb" />
                     </div>
                 </CForm>
             </CModalBody>
             <CModalFooter>
-                <CButton color="secondary" @click="() => { Visibletambahdata = false }">Tutup</CButton>
+                <CButton color="secondary" @click="() => { Visibletambahdata = false }">
+                    Tutup
+                </CButton>
                 <CButton color="primary" @click.prevent="createData()">Tambahkan</CButton>
             </CModalFooter>
         </CModal>
+        <!-- ---- -->
         <!-- Modal Detail Data  -->
         <CModal :visible="Visibledetaildata" @close="() => { Visibledetaildata = false }" aria-labelledby="LiveDemoExampleLabel">
             <CModalHeader>
-                <CModalTitle id="LiveDemoExampleLabel">Detail Data Teknisi</CModalTitle>
+                <CModalTitle id="LiveDemoExampleLabel">Detail Data</CModalTitle>
             </CModalHeader>
             <CModalBody>
                 <CForm class="row g-4">
-                    <!-- Nama Teknisi  -->
+                    <!-- Kode -->
                     <div class="col-auto">
-                        <CFormInput type="text" value="Nama Teknisi" readonly plain-text />
+                        <CFormInput type="text" value="Kode" readonly plain-text />
                     </div>
                     <div class="col-auto">
-                        <CFormInput type="text" placeholder="Nama" v-model="detaildata.nama_teknisi" readonly />
+                        <CFormInput type="text" v-model="detaildata.Tr_task_kode" readonly />
                     </div>
-                    <!-- Alamat Teknisi -->
+                    <!-- Status -->
                     <div class="col-auto">
-                        <CFormInput type="text" value="Alamat Teknisi" readonly plain-text />
-                    </div>
-                    <div class="col-auto">
-                        <textarea class="form-control" v-model="detaildata.alamat_teknisi" readonly></textarea>
-                    </div>
-                    <!-- Spesialisasi Teknisi  -->
-                    <div class="col-auto">
-                        <CFormInput type="text" value="Spesialisasi" readonly plain-text />
+                        <CFormInput type="text" value="Status" readonly plain-text />
                     </div>
                     <div class="col-auto">
-                        <CFormInput type="text" placeholder="Spesialisasi" v-model="detaildata.spesialisasi" readonly />
+                        <CFormInput type="text" v-model="detaildata.Tr_task_status" readonly />
                     </div>
-                    <!-- Telepon Teknisi  -->
+                    <!-- Prioritas -->
                     <div class="col-auto">
-                        <CFormInput type="text" value="No.Telepon" readonly plain-text />
+                        <CFormInput type="text" value="Prioritas" readonly plain-text />
                     </div>
                     <div class="col-auto">
-                        <CFormInput type="text" v-model="detaildata.no_telepon_teknisi" readonly />
+                        <CFormInput type="text" v-model="detaildata.Tr_task_priority" readonly />
+                    </div>
+                    <!-- Kategori -->
+                    <div class="col-auto">
+                        <CFormInput type="text" value="Kategori" readonly plain-text />
+                    </div>
+                    <div class="col-auto">
+                        <CFormInput type="text" v-model="detaildata.Tr_task_kategori" readonly />
+                    </div>
+                    <!-- Tanggal -->
+                    <div class="col-auto">
+                        <CFormInput type="date" value="Tanggal" readonly plain-text />
+                    </div>
+                    <div class="col-auto">
+                        <CFormInput type="date" v-model="detaildata.Tr_task_created" readonly />
+                    </div>
+                    <!-- Detail -->
+                    <div class="col-auto">
+                        <CFormInput type="text" value="Detail" readonly plain-text />
+                    </div>
+                    <div class="col-auto">
+                        <CFormInput type="text" v-model="detaildata.Tr_task_detail" readonly />
+                    </div>
+                    <!-- Pegawai -->
+                    <div class="col-auto">
+                        <CFormInput type="text" value="Pegawai" readonly plain-text />
+                    </div>
+                    <div class="col-auto">
+                        <CFormInput type="text" v-model="detaildata.Tr_task_pegawai_list_penangan" readonly />
                     </div>
                 </CForm>
             </CModalBody>
             <CModalFooter>
-                <CButton color="secondary" @click="() => { Visibledetaildata = false }">Tutup</CButton>
+                <CButton color="secondary" @click="() => { Visibledetaildata = false }">
+                    Tutup
+                </CButton>
             </CModalFooter>
         </CModal>
+        <!-- ---- -->
     </CRow>
 </template>
 <script src="./Service_table.jsx"></script>
+

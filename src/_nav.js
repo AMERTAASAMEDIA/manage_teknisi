@@ -47,6 +47,18 @@ export default [{
         icon: 'cil-drop', 
     },
     {
+        component: 'CNavItem',
+        name: 'PSB',
+        to: '/psb',
+        icon: 'cil-drop', 
+    },
+    {
+        component: 'CNavItem',
+        name: 'Maintenance',
+        to: '/maintenance',
+        icon: 'cil-drop', 
+    },
+    {
         component: 'CNavGroup',
         name: 'Management Internet',
         to: '/buttons',
