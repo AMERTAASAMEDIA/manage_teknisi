@@ -1,14 +1,12 @@
 import Axios from "axios"
-import allSource from "../../../../all.source";
 import allSourceKoordinator from "../../../../all.source_koordinator";
-import allSource_koordinator from "../../../../all.source_koordinator";
 export default {
     data() {
         return {
             Visibletambahdata: false,
             Visibledetaildata: false,
-            data_item: "Data Ticket",
-            detail_item: "DATA TICKET YANG HARUS DITANGANI",
+            data_item: "Data Tiket",
+            detail_item: "DATA TIKET YANG HARUS DITANGANI",
             list_item: [],
             cari: '',
             current: 1,
@@ -37,46 +35,7 @@ export default {
                         icon: "success"
                     })
                 } else {
-                    Axios.put(allSource_koordinator.updateDataTicket + id, {
-                        Tr_task_status: "N"
-                    }).then((response) => {
-                        if (response.status = 200) {
-                            this.$swal.fire({
-                                title: "Berhasil!",
-                                text: "Data telah dihapus.",
-                                icon: "success"
-                            });
-                        } else {
-                            this.$swal.fire({
-                                title: "Gagal!",
-                                text: "Data gagal dihapus.",
-                                icon: "danger"
-                            });
-                        }
-                        this.getdata()
-                    })
-                }
-            });
-        },
-        // Temp hapus data 
-        progressdataticket(id) {
-            // alert(id)
-            this.$swal.fire({
-                title: "Apakah anda yakin?",
-                icon: "warning",
-                showCancelButton: true,
-                confirmButtonColor: "#3085d6",
-                cancelButtonColor: "#d33",
-                confirmButtonText: "Ya"
-            }).then((result) => {
-                if (result.isDismissed) {
-                    this.$swal.fire({
-                        title: "Dibatalkan",
-                        text: "Anda telah membatalkan aksi",
-                        icon: "success"
-                    })
-                } else {
-                    Axios.put(allSource_koordinator.updateDataTicket + id, {
+                    Axios.put(allSourceKoordinator.updateDataTicket + id, {
                         Tr_task_status: "N"
                     }).then((response) => {
                         if (response.status = 200) {
@@ -169,7 +128,6 @@ export default {
         FilterPost: function () {
             return this.paginated.filter((item) => {
                 var search_kode = item.Tr_task_kode.toLowerCase().includes(this.cari.toLowerCase());
-                // var search_toko = item.master_supplier_toko.toLowerCase().includes(this.cari.toLowerCase());
 
                 return search_kode;
             });

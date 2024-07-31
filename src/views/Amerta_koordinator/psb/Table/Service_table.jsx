@@ -1,14 +1,12 @@
 import Axios from "axios"
-import allSource from "../../../../all.source";
 import allSourceKoordinator from "../../../../all.source_koordinator";
-import allSource_koordinator from "../../../../all.source_koordinator";
 export default {
     data() {
         return {
             Visibletambahdata: false,
             Visibledetaildata: false,
-            data_item: "Data Ticket",
-            detail_item: "DATA TICKET YANG HARUS DITANGANI",
+            data_item: "Data Ticket PSB",
+            detail_item: "DATA TICKET PSB YANG SEDANG DITANGANI (ON PROGRESS)",
             list_item: [],
             cari: '',
             current: 1,
@@ -37,7 +35,7 @@ export default {
                         icon: "success"
                     })
                 } else {
-                    Axios.put(allSource_koordinator.updateDataTicket + id, {
+                    Axios.put(allSourceKoordinator.updateDataTicket + id, {
                         Tr_task_status: "N"
                     }).then((response) => {
                         if (response.status = 200) {
@@ -78,7 +76,7 @@ export default {
                 Tr_task_updated: new Date().toISOString().slice(0, 10),
                 Tr_task_detail: this.data.Tr_task_detail,
                 Tr_task_pic: this.data.Tr_task_pic,
-                // Tr_task_pegawai_list_penangan : this.data.Tr_task_pegawai_list_penangan
+                Tr_task_pegawai_list_penangan : this.data.Tr_task_pegawai_list_penangan
             }
             // Clear after modal box closed 
             Axios.post(allSourceKoordinator.createDataTicket, newdata).then(() => {
@@ -98,7 +96,7 @@ export default {
         },
         // LIST DATA 
         getdata() {
-            Axios.get(allSourceKoordinator.getDataTicket + this.$store.getters.Auth_domain).then((response) => {
+            Axios.get(allSourceKoordinator.getDataTicketByP + this.$store.getters.Auth_domain).then((response) => {
                 this.list_item = response.data;
                 // console.log(response.data)
                 // alert(response.data)
@@ -132,6 +130,7 @@ export default {
                 .filter((item) => {
                     // Cek apakah kategori adalah 'infra'
                     var isInfraCategory = item.Tr_task_kategori.toLowerCase() === 'psb';
+                   
         
                     // Cek apakah kode mencocokkan pencarian
                     var search_kode = item.Tr_task_kode.toLowerCase().includes(this.cari.toLowerCase());

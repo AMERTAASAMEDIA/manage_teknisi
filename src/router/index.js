@@ -160,6 +160,20 @@ const routes = [{
                 // redirect: '/item',
             },
             {
+                path: '/edit-psb/:id',
+                name: 'EditPSB',
+                component: () =>
+                    import ('@/views/Amerta_koordinator/psb/Form/update.vue'),
+                // redirect: '/item',
+            },
+            {
+                path: '/edit-mt/:id',
+                name: 'EditMaintenance',
+                component: () =>
+                    import ('@/views/Amerta_koordinator/mt/Form/update.vue'),
+                // redirect: '/item',
+            },
+            {
                 path: '/edit-teknisi/:id',
                 name: 'EditTeknisi',
                 component: () =>

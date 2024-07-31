@@ -15,7 +15,7 @@
         <CCol :xs="12">
             <CCard class="mb-4">
                 <CCardHeader>
-                    <strong>{{ data_item }}</strong> <small>#</small>
+                    <strong>Tabel {{ data_item }}</strong>
                 </CCardHeader>
                 <CCardBody>
                     <CRow class="mb-6">
@@ -158,54 +158,60 @@
             </CModalHeader>
             <CModalBody>
                 <CForm class="row g-4">
-                    <!-- Kode -->
+                    <!-- Nama -->
                     <div class="col-auto">
-                        <CFormInput type="text" value="Kode" readonly plain-text />
+                        <CFormInput type="text" value="Nama" readonly plain-text />
                     </div>
                     <div class="col-auto">
-                        <CFormInput type="text" v-model="detaildata.Tr_task_kode" readonly />
+                        <CFormInput type="text" placeholder="Nama" v-model="detaildata.master_pengguna_nama" readonly/>
                     </div>
-                    <!-- Status -->
+                    <!-- ID -->
                     <div class="col-auto">
-                        <CFormInput type="text" value="Status" readonly plain-text />
-                    </div>
-                    <div class="col-auto">
-                        <CFormInput type="text" v-model="detaildata.Tr_task_status" readonly />
-                    </div>
-                    <!-- Prioritas -->
-                    <div class="col-auto">
-                        <CFormInput type="text" value="Prioritas" readonly plain-text />
+                        <CFormInput type="text" value="ID" readonly plain-text />
                     </div>
                     <div class="col-auto">
-                        <CFormInput type="text" v-model="detaildata.Tr_task_priority" readonly />
+                        <CFormInput type="text" placeholder="ID" v-model="detaildata.master_pengguna_id" readonly/>
                     </div>
-                    <!-- Kategori -->
+                    <!-- Alamat -->
                     <div class="col-auto">
-                        <CFormInput type="text" value="Kategori" readonly plain-text />
-                    </div>
-                    <div class="col-auto">
-                        <CFormInput type="text" v-model="detaildata.Tr_task_kategori" readonly />
-                    </div>
-                    <!-- Tanggal -->
-                    <div class="col-auto">
-                        <CFormInput type="date" value="Tanggal" readonly plain-text />
+                        <CFormInput type="text" value="Alamat" readonly plain-text />
                     </div>
                     <div class="col-auto">
-                        <CFormInput type="date" v-model="detaildata.Tr_task_created" readonly />
+                        <CFormInput type="text" placeholder="Alamat" v-model="detaildata.master_pengguna_alamat" readonly/>
                     </div>
-                    <!-- Detail -->
+                    <!-- Role -->
                     <div class="col-auto">
-                        <CFormInput type="text" value="Detail" readonly plain-text />
-                    </div>
-                    <div class="col-auto">
-                        <CFormInput type="text" v-model="detaildata.Tr_task_detail" readonly />
-                    </div>
-                    <!-- Pegawai -->
-                    <div class="col-auto">
-                        <CFormInput type="text" value="Pegawai" readonly plain-text />
+                        <CFormInput type="text" value="Role" readonly plain-text />
                     </div>
                     <div class="col-auto">
-                        <CFormInput type="text" v-model="detaildata.Tr_task_pegawai_list_penangan" readonly />
+                        <CFormInput type="text" placeholder="Role" v-model="detaildata.master_pengguna_role" readonly/>
+                    </div>
+                    <!-- No Telepon -->
+                    <div class="col-auto">
+                        <CFormInput type="text" value="No Telepon" readonly plain-text />
+                    </div>
+                    <div class="col-auto">
+                        <CFormInput type="text" placeholder="No Telepon" v-model="detaildata.master_pengguna_no_telepon" readonly/>
+                    </div>
+                    <!-- Detail Identitas -->
+                    <div class="col-auto">
+                        <CFormInput type="text" value="KTP" readonly plain-text />
+                    </div>
+                    <div class="col-auto">
+                        <CFormInput type="text" placeholder="KTP" v-model="detaildata.master_pengguna_detail_identitas_ktp" readonly/>
+                    </div>
+                    <div class="col-auto">
+                        <CFormInput type="text" value="NPWP" readonly plain-text />
+                    </div>
+                    <div class="col-auto">
+                        <CFormInput type="text" placeholder="NPWP" v-model="detaildata.master_pengguna_detail_identitas_npwp" readonly/>
+                    </div>
+                    <!-- PIC -->
+                    <div class="col-auto">
+                        <CFormInput type="text" value="PIC" readonly plain-text />
+                    </div>
+                    <div class="col-auto">
+                        <CFormInput type="text" placeholder="PIC" v-model="detaildata.master_pengguna_pic_psb" readonly/>
                     </div>
                 </CForm>
             </CModalBody>

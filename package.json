@@ -36,6 +36,7 @@
     "vue": "^3.4.21",
     "vue-currency-filter": "^5.2.0",
     "vue-currency-input": "^3.1.0",
+    "vue-multiselect": "^3.0.0",
     "vue-router": "^4.3.0",
     "vue-signature-pad": "^3.0.2",
     "vue-sweetalert2": "^5.0.5",
