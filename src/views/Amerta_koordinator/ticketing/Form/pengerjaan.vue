@@ -15,18 +15,17 @@
                             <CFormLabel>Pegawai List Penanganan</CFormLabel>
                             <Multiselect
                                 v-model="detaildata.Tr_task_pegawai_list_penangan"
-                                :options="pegawaiList"
+                                :options="pegawaiOptions"
                                 label="master_pengguna_nama"
                                 track-by="master_pengguna_id"
-                                placeholder="Select Pegawai"
+                                placeholder="Pilih pegawai"
                                 :multiple="true"
                                 :taggable="true"
                                 @tag="addTag"
                             />
+                            <br>
                         </div>
                         <CButton color="primary" @click.prevent="PengerjaanDetailData()">Konfirmasi</CButton> &nbsp;
-                        <!-- <CButton color="secondary" @click="$router.go(-1)">Kembali</CButton> &nbsp; -->
-                        <!-- <CButton color="secondary" :to="{name:'Supplier'}">Kembali</CButton> &nbsp; -->
                         <router-link :to="{name:'Ticketing'}" tag="button" color="secondary"><CButton color="secondary">Kembali</CButton></router-link>
                     </CForm>
                 </CCardBody>
@@ -34,5 +33,5 @@
         </CCol>
     </CRow>
 </template>
+
 <script src="./Service/edit_ticketing"></script>
-  

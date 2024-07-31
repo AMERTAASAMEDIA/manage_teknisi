@@ -33,6 +33,7 @@
     "nanoid": "^5.0.7",
     "pinia": "^2.1.7",
     "simplebar-vue": "^2.3.3",
+    "sweetalert2": "^11.12.3",
     "vue": "^3.4.21",
     "vue-currency-filter": "^5.2.0",
     "vue-currency-input": "^3.1.0",
