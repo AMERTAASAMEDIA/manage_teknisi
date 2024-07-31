@@ -15,7 +15,7 @@
         <CCol :xs="12">
             <CCard class="mb-4">
                 <CCardHeader>
-                    <strong>{{ data_item }}</strong> <small>#</small>
+                    <strong>Tabel {{ data_item }}</strong> 
                 </CCardHeader>
                 <CCardBody>
                     <CRow class="mb-6">
@@ -40,7 +40,6 @@
                                 <CTableHeaderCell scope="col">Kategori</CTableHeaderCell>
                                 <CTableHeaderCell scope="col">Tanggal</CTableHeaderCell>
                                 <CTableHeaderCell scope="col">Pic</CTableHeaderCell>
-                                <!-- <CTableHeaderCell scope="col">Pegawai</CTableHeaderCell> -->
                                 <CTableHeaderCell scope="col">#</CTableHeaderCell>
                             </CTableRow>
                         </CTableHead>
@@ -54,14 +53,13 @@
                                 <CTableDataCell>{{ items.Tr_task_kategori }}</CTableDataCell>
                                 <CTableDataCell>{{ items.Tr_task_created }}</CTableDataCell>
                                 <CTableDataCell>{{ items.Tr_task_pic }}</CTableDataCell>
-                                <!-- <CTableDataCell>{{ items.Tr_task_pegawai_list_penangan }}</CTableDataCell> -->
                                 <CTableDataCell>
                                     <CDropdown>
                                         <CDropdownToggle color="secondary">Aksi</CDropdownToggle>
                                         <CDropdownMenu>
                                             <CDropdownItem @click="detaildatasupplier(items)">Detail</CDropdownItem>
                                             <CDropdownItem><router-link :to="{name:'EditTicketing',params:{id:items._id}}">Edit</router-link></CDropdownItem>
-                                            <CDropdownItem><router-link :to="{name:'PengerjaanTicketing',params:{id:items._id}}">Pengerjaan</router-link></CDropdownItem>
+                                            <CDropdownItem><router-link :to="{name:'PengerjaanTicketing',params:{id:items._id}}">Update Pengerjaan</router-link></CDropdownItem>
                                             <CDropdownItem @click="hapusdataticket(items._id)">Hapus</CDropdownItem>
                                         </CDropdownMenu>
                                     </CDropdown>
@@ -159,13 +157,6 @@
                     <div class="col-auto">
                         <CFormInput type="text" placeholder="Pic" v-model="data.Tr_task_pic" />
                     </div>
-                    <!-- Pegawai -->
-                    <!-- <div class="col-auto">
-                        <CFormInput type="text" value="Pegawai" readonly plain-text />
-                    </div>
-                    <div class="col-auto">
-                        <CFormInput type="text" placeholder="Pegawai" v-model="data.Tr_task_pegawai_list_penangan" />
-                    </div> -->
                 </CForm>
             </CModalBody>
             <CModalFooter>
@@ -190,12 +181,26 @@
                     <div class="col-auto">
                         <CFormInput type="text" v-model="detaildata.Tr_task_kode" readonly />
                     </div>
-                    <!-- Status -->
+                    <!-- Nama -->
                     <div class="col-auto">
-                        <CFormInput type="text" value="Status" readonly plain-text />
+                        <CFormInput type="text" value="Nama Pelanggan" readonly plain-text />
                     </div>
                     <div class="col-auto">
-                        <CFormInput type="text" v-model="detaildata.Tr_task_status" readonly />
+                        <CFormInput type="text" placeholder="Nama Pelanggan" v-model="detaildata.Tr_task_nama" readonly/>
+                    </div>
+                    <!-- No Telepon -->
+                    <div class="col-auto">
+                        <CFormInput type="text" value="No Telepon Pelanggan" readonly plain-text />
+                    </div>
+                    <div class="col-auto">
+                        <CFormInput type="text" placeholder="No Telepon Pelanggan" v-model="detaildata.Tr_task_no_telepon" readonly/>
+                    </div>
+                    <!-- Alamat -->
+                    <div class="col-auto">
+                        <CFormInput type="text" value="Alamat Pelanggan" readonly plain-text />
+                    </div>
+                    <div class="col-auto">
+                        <CFormInput type="text" placeholder="Alamat Pelanggan" v-model="detaildata.Tr_task_alamat" readonly/>
                     </div>
                     <!-- Prioritas -->
                     <div class="col-auto">
@@ -213,7 +218,7 @@
                     </div>
                     <!-- Tanggal -->
                     <div class="col-auto">
-                        <CFormInput type="date" value="Tanggal" readonly plain-text />
+                        <CFormInput type="text" value="Tanggal" readonly plain-text />
                     </div>
                     <div class="col-auto">
                         <CFormInput type="date" v-model="detaildata.Tr_task_created" readonly />
@@ -225,12 +230,12 @@
                     <div class="col-auto">
                         <CFormInput type="text" v-model="detaildata.Tr_task_detail" readonly />
                     </div>
-                    <!-- Pegawai -->
+                    <!-- PIC -->
                     <div class="col-auto">
-                        <CFormInput type="text" value="Pegawai" readonly plain-text />
+                        <CFormInput type="text" value="Pic" readonly plain-text />
                     </div>
                     <div class="col-auto">
-                        <CFormInput type="text" v-model="detaildata.Tr_task_pegawai_list_penangan" readonly />
+                        <CFormInput type="text" placeholder="Pic" v-model="detaildata.Tr_task_pic" readonly/>
                     </div>
                 </CForm>
             </CModalBody>

@@ -1,23 +1,23 @@
 import Axios from "axios"
-import allSource_koordinator from "../../../../../all.source_koordinator"
+import allSourceKoordinator from "../../../../../all.source_koordinator"
 export default {
     data() {
         return {
             Visibletambahdata: false,
-            data_item: "Data Supplier",
+            data_item: "Data Ticket Maintenance",
             list_item: [],
             cari: '',
             current: 1,
             pageSize: 10,
             detaildata: {}
         }
-    },
+    }, 
     methods: {
         kembali() {
             this.$router.go(-1)
         },
         getDetailData() {
-            Axios.get(allSource_koordinator.getDetailTicket + this.$route.params.id)
+            Axios.get(allSourceKoordinator.getDetailTicket + this.$route.params.id)
                 .then((response) => {
                     this.detaildata = response.data
                     console.log(response.data)
@@ -39,10 +39,10 @@ export default {
                     text: "Perubahan Telah tersimpan",
                     icon: "success"
                 });
-                Axios.put(allSource_koordinator.updateDataTicket + this.$route.params.id, this.detaildata)
+                Axios.put(allSourceKoordinator.updateDataTicket + this.$route.params.id, this.detaildata)
                     .then((response) => {
                         this.getDetailData()
-                        this.$router.push('/ticketing')
+                        this.$router.push('/maintenance')
                     }).catch((error) => {
                         this.$swal.fire({
                             icon: "error",

@@ -3,7 +3,7 @@
         <CCol :xs="12">
             <CCard class="mb-4">
                 <CCardHeader>
-                    <strong>Form Ubah Data Supplier</strong>
+                    <strong>Form Ubah {{ data_item }}</strong>
                 </CCardHeader>
                 <CCardBody>
                     <CForm>

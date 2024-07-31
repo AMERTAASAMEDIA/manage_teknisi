@@ -4,7 +4,7 @@ export default {
     data() {
         return {
             Visibletambahdata: false,
-            data_item: "Data Supplier",
+            data_item: "Data Teknisi",
             list_item: [],
             cari: '',
             current: 1,

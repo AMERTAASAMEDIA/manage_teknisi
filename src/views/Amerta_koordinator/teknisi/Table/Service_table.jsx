@@ -1,14 +1,12 @@
 import Axios from "axios"
-import allSource from "../../../../all.source";
 import allSourceKoordinator from "../../../../all.source_koordinator";
-import allSource_koordinator from "../../../../all.source_koordinator";
 export default {
     data() {
         return {
             Visibletambahdata: false,
             Visibledetaildata: false,
-            data_item: "Data Ticket",
-            detail_item: "DATA TICKET YANG HARUS DITANGANI",
+            data_item: "Data Teknisi",
+            detail_item: "DATA TEKNISI YANG BEKERJA DI PT AMERTA ASA MEDIA",
             list_item: [],
             cari: '',
             current: 1,
@@ -37,8 +35,8 @@ export default {
                         icon: "success"
                     })
                 } else {
-                    Axios.put(allSource_koordinator.updateDataTeknisi + id, {
-                        Tr_task_status: "N"
+                    Axios.put(allSourceKoordinator.updateDataTeknisi + id, {
+                        master_pengguna_status: "N"
                     }).then((response) => {
                         if (response.status = 200) {
                             this.$swal.fire({
@@ -86,7 +84,7 @@ export default {
                 master_pengguna_pic_psb: this.data.master_pengguna_pic_psb
             }
             // Clear after modal box closed 
-            Axios.post(allSource_koordinator.createDataTeknisi, newdata).then(() => {
+            Axios.post(allSourceKoordinator.createDataTeknisi, newdata).then(() => {
                 this.$swal.fire({
                     position: "center",
                     icon: "success",
@@ -135,7 +133,6 @@ export default {
         FilterPost: function () {
             return this.paginated.filter((item) => {
                 var search_id = item.master_pengguna_id.toLowerCase().includes(this.cari.toLowerCase());
-                // var search_toko = item.master_supplier_toko.toLowerCase().includes(this.cari.toLowerCase());
 
                 return search_id;
             });

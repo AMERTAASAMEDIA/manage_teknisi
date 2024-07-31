@@ -3,14 +3,14 @@
         <CCol :xs="12">
             <CCard class="mb-4">
                 <CCardHeader>
-                    <strong>Form Ubah Data Supplier</strong>
+                    <strong>Form Ubah {{ data_item }}</strong>
                 </CCardHeader>
                 <CCardBody>
                     <CForm>
                         <div class="mb-3">
                             <CFormLabel>Kode</CFormLabel>
                             <CFormInput type="text" v-model="detaildata.Tr_task_kode" readonly />
-                        </div>
+                        </div> 
                         <div class="mb-3">
                             <CFormLabel>Nama Pelanggan</CFormLabel>
                             <CFormInput type="text" v-model="detaildata.Tr_task_nama" />
@@ -44,15 +44,19 @@
                             <CFormLabel>PIC</CFormLabel>
                             <CFormInput type="text" placeholder="Pic" v-model="detaildata.Tr_task_pic" />
                         </div>
+                        <div class="mb-3">
+                            <CFormLabel>Pegawai List Penanganan</CFormLabel>
+                            <CFormInput type="text" placeholder="Pegawai List Penanganan" v-model="detaildata.Tr_task_pegawai_list_penangan" />
+                        </div>
                         <CButton color="primary" @click.prevent="UpdateDetailData()">Konfirmasi</CButton> &nbsp;
                         <!-- <CButton color="secondary" @click="$router.go(-1)">Kembali</CButton> &nbsp; -->
                         <!-- <CButton color="secondary" :to="{name:'Supplier'}">Kembali</CButton> &nbsp; -->
-                        <router-link :to="{name:'Supplier'}" tag="button" color="secondary"><CButton color="secondary">Kembali</CButton></router-link>
+                        <router-link :to="{name:'ProjectInfra'}" tag="button" color="secondary"><CButton color="secondary">Kembali</CButton></router-link>
                     </CForm>
                 </CCardBody>
             </CCard>
         </CCol>
-    </CRow>
+    </CRow> 
 </template>
 <script src="./Service/edit_infra"></script>
   

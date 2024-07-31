@@ -6,6 +6,8 @@ const Server = "http://localhost:4000/api/";
 
 // DATA TICKET 
 const getDataTicket = Server + `Tr_task/Trtask/getdata/`;
+const getDataTicketByP = Server + `Tr_task/Trtask/getdata/progress/`;
+const getDataTicketByD = Server + `Tr_task/Trtask/getdata/completed/`;
 const getDetailTicket = Server + `Tr_task/Trtask/getbyid/`;
 const createDataTicket = Server + `Tr_task/Trtask/create`;
 const updateDataTicket = Server + `Tr_task/Trtask/updatebyid/`;
@@ -21,6 +23,8 @@ const updateDataTeknisi = Server + `Master_pengguna/MasterPengguna/updatebyid/`
 
 export default {
     getDataTicket,
+    getDataTicketByP,
+    getDataTicketByD,
     getDetailTicket,
     createDataTicket,
     updateDataTicket,
