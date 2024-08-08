@@ -14,10 +14,10 @@
                         <div class="mb-3">
                             <CFormLabel>Pegawai List Penanganan</CFormLabel>
                             <Multiselect
-                                v-model="detaildata.Tr_task_pegawai_list_penangan"
-                                :options="pegawaiOptions"
-                                label="master_pengguna_nama"
-                                track-by="master_pengguna_id"
+                                v-model="selectedPegawai"
+                                :options="filteredPegawaiOptions"
+                                :label="'master_pengguna_nama'"
+                                :track-by="'master_pengguna_id'"
                                 placeholder="Pilih pegawai"
                                 :multiple="true"
                                 :taggable="true"
@@ -25,7 +25,7 @@
                             />
                             <br>
                         </div>
-                        <CButton color="primary" @click.prevent="PengerjaanDetailData()">Konfirmasi</CButton> &nbsp;
+                        <CButton color="primary" @click.prevent="PengerjaanDetailData">Konfirmasi</CButton> &nbsp;
                         <router-link :to="{name:'Ticketing'}" tag="button" color="secondary"><CButton color="secondary">Kembali</CButton></router-link>
                     </CForm>
                 </CCardBody>

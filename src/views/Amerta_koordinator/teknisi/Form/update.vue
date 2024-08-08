@@ -30,11 +30,11 @@
                         <!-- Detail Identitas -->
                         <div class="mb-3">
                             <CFormLabel>KTP</CFormLabel>
-                            <CFormInput type="text" v-model="detaildata.master_pengguna_detail_identitas_ktp"  />
+                            <CFormInput type="text" v-model="detaildata.master_pengguna_detail_identitas.master_pengguna_detail_identitas_ktp"  />
                         </div>
                         <div class="mb-3">
                             <CFormLabel>NPWP</CFormLabel>
-                            <CFormInput type="text" v-model="detaildata.master_pengguna_detail_identitas_npwp"  />
+                            <CFormInput type="text" v-model="detaildata.master_pengguna_detail_identitas.master_pengguna_detail_identitas_npwp"  />
                         </div>
                         <div class="mb-3">
                             <CFormLabel>PIC</CFormLabel>

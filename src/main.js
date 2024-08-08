@@ -16,8 +16,8 @@ import 'sweetalert2/dist/sweetalert2.min.css';
 // Unused 
 // import JwPagination from 'jw-vue-pagination';
 // import Table from 'data-table-vue-v3';
-
-
+import '@/styles/tailwind.css';
+import "preline/preline";
 // option for input 
 
 const app = createApp(App)

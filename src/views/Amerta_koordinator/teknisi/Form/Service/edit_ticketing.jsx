@@ -9,7 +9,18 @@ export default {
             cari: '',
             current: 1,
             pageSize: 10,
-            detaildata: {}
+            detaildata: {
+                master_pengguna_nama: "",
+                master_pengguna_id: "",
+                master_pengguna_alamat: "",
+                master_pengguna_role: "",
+                master_pengguna_no_telepon: "",
+                master_pengguna_detail_identitas: {
+                    master_pengguna_detail_identitas_ktp: "",
+                    master_pengguna_detail_identitas_npwp: "",
+                },
+                master_pengguna_pic_psb: ""
+            }
         }
     },
     methods: {

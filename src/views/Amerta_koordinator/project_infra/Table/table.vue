@@ -54,7 +54,7 @@
                                 <CTableDataCell>{{ items.Tr_task_kategori }}</CTableDataCell>
                                 <CTableDataCell>{{ items.Tr_task_created }}</CTableDataCell>
                                 <CTableDataCell>{{ items.Tr_task_pic }}</CTableDataCell>
-                                <CTableDataCell>{{ items.Tr_task_pegawai_list_penangan }}</CTableDataCell>
+                                <CTableDataCell>{{ items.Tr_task_pegawai_list_penanganan }}</CTableDataCell>
                                 <CTableDataCell>
                                     <CDropdown>
                                         <CDropdownToggle color="secondary">Aksi</CDropdownToggle>
@@ -153,7 +153,7 @@
                         <CFormInput type="text" value="Pegawai" readonly plain-text />
                     </div>
                     <div class="col-auto">
-                        <CFormInput type="text" v-model="detaildata.Tr_task_pegawai_list_penangan" readonly />
+                        <CFormInput type="text" v-model="detaildata.Tr_task_pegawai_list_penanganan" readonly />
                     </div>
                 </CForm>
             </CModalBody>

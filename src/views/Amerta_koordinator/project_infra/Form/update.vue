@@ -46,7 +46,7 @@
                         </div>
                         <div class="mb-3">
                             <CFormLabel>Pegawai List Penanganan</CFormLabel>
-                            <CFormInput type="text" placeholder="Pegawai List Penanganan" v-model="detaildata.Tr_task_pegawai_list_penangan" />
+                            <CFormInput type="text" placeholder="Pegawai List Penanganan" v-model="detaildata.Tr_task_pegawai_list_penanganan" />
                         </div>
                         <CButton color="primary" @click.prevent="UpdateDetailData()">Konfirmasi</CButton> &nbsp;
                         <!-- <CButton color="secondary" @click="$router.go(-1)">Kembali</CButton> &nbsp; -->

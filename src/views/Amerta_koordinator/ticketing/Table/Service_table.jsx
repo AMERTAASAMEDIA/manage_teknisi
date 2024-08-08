@@ -76,7 +76,7 @@ export default {
                 Tr_task_updated: new Date().toISOString().slice(0, 10),
                 Tr_task_detail: this.data.Tr_task_detail,
                 Tr_task_pic: this.data.Tr_task_pic,
-                Tr_task_pegawai_list_penangan : this.data.Tr_task_pegawai_list_penangan
+                Tr_task_pegawai_list_penanganan : this.data.Tr_task_pegawai_list_penanganan
             }
             // Clear after modal box closed 
             Axios.post(allSourceKoordinator.createDataTicket, newdata).then(() => {
@@ -96,7 +96,7 @@ export default {
         },
         // LIST DATA 
         getdata() {
-            Axios.get(allSourceKoordinator.getDataTicket + this.$store.getters.Auth_domain).then((response) => {
+            Axios.get(allSourceKoordinator.getDataTicket + this.$store.getters.Auth_domain + "/Y").then((response) => {
                 this.list_item = response.data;
                 // console.log(response.data)
                 // alert(response.data)
