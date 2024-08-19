@@ -1,135 +1,135 @@
-/* VirtualScroller */
-:root {
-    --p-virtualscroller-loader-mask-background: #ffffff; /* Latar belakang loader */
-    --p-virtualscroller-loader-mask-color: #000000; /* Warna mask loader */
-    --p-virtualscroller-loader-icon-size: 2rem; /* Ukuran ikon loader */
-}
+// /* VirtualScroller */
+// :root {
+//     --p-virtualscroller-loader-mask-background: #ffffff; /* Latar belakang loader */
+//     --p-virtualscroller-loader-mask-color: #000000; /* Warna mask loader */
+//     --p-virtualscroller-loader-icon-size: 2rem; /* Ukuran ikon loader */
+// }
 
-/* IconField */
-:root {
-    --p-iconfield-icon-color: #333333; /* Warna ikon */
-}
+// /* IconField */
+// :root {
+//     --p-iconfield-icon-color: #333333; /* Warna ikon */
+// }
 
-/* InputText */
-:root {
-    --p-inputtext-background: #ffffff; /* Latar belakang */
-    --p-inputtext-disabled-background: #f0f0f0; /* Latar belakang non-aktif */
-    --p-inputtext-filled-background: #ffffff; /* Latar belakang terisi */
-    --p-inputtext-filled-focus-background: #f9f9f9; /* Latar belakang terisi dan fokus */
-    --p-inputtext-border-color: #d0d0d0; /* Warna border */
-    --p-inputtext-hover-border-color: #b0b0b0; /* Warna border saat hover */
-    --p-inputtext-focus-border-color: #007bff; /* Warna border saat fokus */
-    --p-inputtext-invalid-border-color: #ff6b6b; /* Warna border saat tidak valid */
-    --p-inputtext-color: #333333; /* Warna teks */
-    --p-inputtext-disabled-color: #a0a0a0; /* Warna teks non-aktif */
-    --p-inputtext-placeholder-color: #888888; /* Warna placeholder */
-    --p-inputtext-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Bayangan */
-    --p-inputtext-padding-x: 0.75rem; /* Padding horizontal */
-    --p-inputtext-padding-y: 0.5rem; /* Padding vertikal */
-    --p-inputtext-border-radius: 0.25rem; /* Radius border */
-    --p-inputtext-focus-ring-width: 2px; /* Lebar focus ring */
-    --p-inputtext-focus-ring-style: solid; /* Gaya focus ring */
-    --p-inputtext-focus-ring-color: #007bff; /* Warna focus ring */
-    --p-inputtext-focus-ring-offset: 0; /* Offset focus ring */
-    --p-inputtext-focus-ring-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25); /* Bayangan focus ring */
-    --p-inputtext-transition-duration: 150ms; /* Durasi transisi */
-    --p-inputtext-sm-font-size: 0.875rem; /* Ukuran font kecil */
-    --p-inputtext-sm-padding-x: 0.625rem; /* Padding horizontal kecil */
-    --p-inputtext-sm-padding-y: 0.375rem; /* Padding vertikal kecil */
-    --p-inputtext-lg-font-size: 1.125rem; /* Ukuran font besar */
-    --p-inputtext-lg-padding-x: 0.875rem; /* Padding horizontal besar */
-    --p-inputtext-lg-padding-y: 0.625rem; /* Padding vertikal besar */
-}
+// /* InputText */
+// :root {
+//     --p-inputtext-background: #ffffff; /* Latar belakang */
+//     --p-inputtext-disabled-background: #f0f0f0; /* Latar belakang non-aktif */
+//     --p-inputtext-filled-background: #ffffff; /* Latar belakang terisi */
+//     --p-inputtext-filled-focus-background: #f9f9f9; /* Latar belakang terisi dan fokus */
+//     --p-inputtext-border-color: #d0d0d0; /* Warna border */
+//     --p-inputtext-hover-border-color: #b0b0b0; /* Warna border saat hover */
+//     --p-inputtext-focus-border-color: #007bff; /* Warna border saat fokus */
+//     --p-inputtext-invalid-border-color: #ff6b6b; /* Warna border saat tidak valid */
+//     --p-inputtext-color: #333333; /* Warna teks */
+//     --p-inputtext-disabled-color: #a0a0a0; /* Warna teks non-aktif */
+//     --p-inputtext-placeholder-color: #888888; /* Warna placeholder */
+//     --p-inputtext-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Bayangan */
+//     --p-inputtext-padding-x: 0.75rem; /* Padding horizontal */
+//     --p-inputtext-padding-y: 0.5rem; /* Padding vertikal */
+//     --p-inputtext-border-radius: 0.25rem; /* Radius border */
+//     --p-inputtext-focus-ring-width: 2px; /* Lebar focus ring */
+//     --p-inputtext-focus-ring-style: solid; /* Gaya focus ring */
+//     --p-inputtext-focus-ring-color: #007bff; /* Warna focus ring */
+//     --p-inputtext-focus-ring-offset: 0; /* Offset focus ring */
+//     --p-inputtext-focus-ring-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25); /* Bayangan focus ring */
+//     --p-inputtext-transition-duration: 150ms; /* Durasi transisi */
+//     --p-inputtext-sm-font-size: 0.875rem; /* Ukuran font kecil */
+//     --p-inputtext-sm-padding-x: 0.625rem; /* Padding horizontal kecil */
+//     --p-inputtext-sm-padding-y: 0.375rem; /* Padding vertikal kecil */
+//     --p-inputtext-lg-font-size: 1.125rem; /* Ukuran font besar */
+//     --p-inputtext-lg-padding-x: 0.875rem; /* Padding horizontal besar */
+//     --p-inputtext-lg-padding-y: 0.625rem; /* Padding vertikal besar */
+// }
 
-/* Checkbox */
-:root {
-    --p-checkbox-border-radius: 0.25rem; /* Radius border */
-    --p-checkbox-width: 1.25rem; /* Lebar checkbox */
-    --p-checkbox-height: 1.25rem; /* Tinggi checkbox */
-    --p-checkbox-background: #ffffff; /* Latar belakang checkbox */
-    --p-checkbox-checked-background: #007bff; /* Latar belakang saat dicentang */
-    --p-checkbox-checked-hover-background: #0056b3; /* Latar belakang saat hover dan dicentang */
-    --p-checkbox-disabled-background: #f0f0f0; /* Latar belakang non-aktif */
-    --p-checkbox-filled-background: #ffffff; /* Latar belakang terisi */
-    --p-checkbox-border-color: #d0d0d0; /* Warna border */
-    --p-checkbox-hover-border-color: #b0b0b0; /* Warna border saat hover */
-    --p-checkbox-focus-border-color: #007bff; /* Warna border saat fokus */
-    --p-checkbox-checked-border-color: #007bff; /* Warna border saat dicentang */
-    --p-checkbox-checked-hover-border-color: #0056b3; /* Warna border saat hover dan dicentang */
-    --p-checkbox-checked-focus-border-color: #0056b3; /* Warna border saat fokus dan dicentang */
-    --p-checkbox-checked-disabled-border-color: #d0d0d0; /* Warna border saat dicentang dan non-aktif */
-    --p-checkbox-invalid-border-color: #ff6b6b; /* Warna border saat tidak valid */
-    --p-checkbox-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Bayangan */
-    --p-checkbox-focus-ring-width: 2px; /* Lebar focus ring */
-    --p-checkbox-focus-ring-style: solid; /* Gaya focus ring */
-    --p-checkbox-focus-ring-color: #007bff; /* Warna focus ring */
-    --p-checkbox-focus-ring-offset: 0; /* Offset focus ring */
-    --p-checkbox-focus-ring-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25); /* Bayangan focus ring */
-    --p-checkbox-transition-duration: 150ms; /* Durasi transisi */
-    --p-checkbox-icon-size: 0.875rem; /* Ukuran ikon */
-    --p-checkbox-icon-color: #333333; /* Warna ikon */
-    --p-checkbox-icon-checked-color: #ffffff; /* Warna ikon saat dicentang */
-    --p-checkbox-icon-checked-hover-color: #ffffff; /* Warna ikon saat hover dan dicentang */
-    --p-checkbox-icon-disabled-color: #a0a0a0; /* Warna ikon non-aktif */
-}
+// /* Checkbox */
+// :root {
+//     --p-checkbox-border-radius: 0.25rem; /* Radius border */
+//     --p-checkbox-width: 1.25rem; /* Lebar checkbox */
+//     --p-checkbox-height: 1.25rem; /* Tinggi checkbox */
+//     --p-checkbox-background: #ffffff; /* Latar belakang checkbox */
+//     --p-checkbox-checked-background: #007bff; /* Latar belakang saat dicentang */
+//     --p-checkbox-checked-hover-background: #0056b3; /* Latar belakang saat hover dan dicentang */
+//     --p-checkbox-disabled-background: #f0f0f0; /* Latar belakang non-aktif */
+//     --p-checkbox-filled-background: #ffffff; /* Latar belakang terisi */
+//     --p-checkbox-border-color: #d0d0d0; /* Warna border */
+//     --p-checkbox-hover-border-color: #b0b0b0; /* Warna border saat hover */
+//     --p-checkbox-focus-border-color: #007bff; /* Warna border saat fokus */
+//     --p-checkbox-checked-border-color: #007bff; /* Warna border saat dicentang */
+//     --p-checkbox-checked-hover-border-color: #0056b3; /* Warna border saat hover dan dicentang */
+//     --p-checkbox-checked-focus-border-color: #0056b3; /* Warna border saat fokus dan dicentang */
+//     --p-checkbox-checked-disabled-border-color: #d0d0d0; /* Warna border saat dicentang dan non-aktif */
+//     --p-checkbox-invalid-border-color: #ff6b6b; /* Warna border saat tidak valid */
+//     --p-checkbox-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Bayangan */
+//     --p-checkbox-focus-ring-width: 2px; /* Lebar focus ring */
+//     --p-checkbox-focus-ring-style: solid; /* Gaya focus ring */
+//     --p-checkbox-focus-ring-color: #007bff; /* Warna focus ring */
+//     --p-checkbox-focus-ring-offset: 0; /* Offset focus ring */
+//     --p-checkbox-focus-ring-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25); /* Bayangan focus ring */
+//     --p-checkbox-transition-duration: 150ms; /* Durasi transisi */
+//     --p-checkbox-icon-size: 0.875rem; /* Ukuran ikon */
+//     --p-checkbox-icon-color: #333333; /* Warna ikon */
+//     --p-checkbox-icon-checked-color: #ffffff; /* Warna ikon saat dicentang */
+//     --p-checkbox-icon-checked-hover-color: #ffffff; /* Warna ikon saat hover dan dicentang */
+//     --p-checkbox-icon-disabled-color: #a0a0a0; /* Warna ikon non-aktif */
+// }
 
-/* Ripple Effect */
-@media (prefers-color-scheme: dark) {
-    :root {
-        --p-ripple-background: rgba(255, 255, 255, 0.3); /* Ripple saat mode gelap */
-    }
-}
-:root {
-    --p-ripple-background: rgba(0, 0, 0, 0.1); /* Ripple untuk tema terang */
-}
+// /* Ripple Effect */
+// @media (prefers-color-scheme: dark) {
+//     :root {
+//         --p-ripple-background: rgba(255, 255, 255, 0.3); /* Ripple saat mode gelap */
+//     }
+// }
+// :root {
+//     --p-ripple-background: rgba(0, 0, 0, 0.1); /* Ripple untuk tema terang */
+// }
 
-/* MultiSelect */
-:root {
-    --p-multiselect-background: #ffffff; /* Latar belakang */
-    --p-multiselect-disabled-background: #f0f0f0; /* Latar belakang non-aktif */
-    --p-multiselect-filled-background: #ffffff; /* Latar belakang terisi */
-    --p-multiselect-filled-focus-background: #f9f9f9; /* Latar belakang terisi dan fokus */
-    --p-multiselect-border-color: #d0d0d0; /* Warna border */
-    --p-multiselect-hover-border-color: #b0b0b0; /* Warna border saat hover */
-    --p-multiselect-focus-border-color: #007bff; /* Warna border saat fokus */
-    --p-multiselect-invalid-border-color: #ff6b6b; /* Warna border saat tidak valid */
-    --p-multiselect-color: #333333; /* Warna teks */
-    --p-multiselect-disabled-color: #a0a0a0; /* Warna teks non-aktif */
-    --p-multiselect-placeholder-color: #888888; /* Warna placeholder */
-    --p-multiselect-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Bayangan */
-    --p-multiselect-padding-x: 0.75rem; /* Padding horizontal */
-    --p-multiselect-padding-y: 0.5rem; /* Padding vertikal */
-    --p-multiselect-border-radius: 0.25rem; /* Radius border */
-    --p-multiselect-focus-ring-width: 2px; /* Lebar focus ring */
-    --p-multiselect-focus-ring-style: solid; /* Gaya focus ring */
-    --p-multiselect-focus-ring-color: #007bff; /* Warna focus ring */
-    --p-multiselect-focus-ring-offset: 0; /* Offset focus ring */
-    --p-multiselect-focus-ring-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25); /* Bayangan focus ring */
-    --p-multiselect-transition-duration: 150ms; /* Durasi transisi */
-    --p-multiselect-dropdown-width: 3rem; /* Lebar dropdown */
-    --p-multiselect-dropdown-color: #333333; /* Warna ikon dropdown */
-    --p-multiselect-overlay-background: #ffffff; /* Warna overlay */
-    --p-multiselect-overlay-border-color: #d0d0d0; /* Warna border overlay */
-    --p-multiselect-overlay-border-radius: 0.25rem; /* Radius border overlay */
-    --p-multiselect-overlay-color: #333333; /* Warna teks overlay */
-    --p-multiselect-overlay-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Bayangan overlay */
-    --p-multiselect-list-padding: 0.5rem; /* Padding daftar */
-    --p-multiselect-list-gap: 0.5rem; /* Jarak daftar */
-    --p-multiselect-list-header-padding: 1rem; /* Padding header daftar */
-    --p-multiselect-option-focus-background: #e9ecef; /* Latar belakang opsi saat fokus */
-    --p-multiselect-option-selected-background: #007bff; /* Latar belakang opsi terpilih */
-    --p-multiselect-option-selected-focus-background: #0056b3; /* Latar belakang opsi terpilih saat fokus */
-    --p-multiselect-option-color: #333333; /* Warna teks opsi */
-    --p-multiselect-option-focus-color: #333333; /* Warna teks opsi saat fokus */
-    --p-multiselect-option-selected-color: #ffffff; /* Warna teks opsi terpilih */
-    --p-multiselect-option-selected-focus-color: #ffffff; /* Warna teks opsi terpilih saat fokus */
-    --p-multiselect-option-padding: 0.5rem; /* Padding opsi */
-    --p-multiselect-option-border-radius: 0.25rem; /* Radius border opsi */
-    --p-multiselect-option-gap: 0.5rem; /* Jarak opsi */
-    --p-multiselect-option-group-background: #f5f5f5; /* Latar belakang grup opsi */
-    --p-multiselect-option-group-color: #333333; /* Warna teks grup opsi */
-    --p-multiselect-option-group-font-weight: 600; /* Berat font grup opsi */
-    --p-multiselect-option-group-padding: 0.5rem; /* Padding grup opsi */
-    --p-multiselect-chip-border-radius: 0.25rem; /* Radius border chip */
-    --p-multiselect-empty-message-padding: 0.5rem; /* Padding pesan kosong */
-}
+// /* MultiSelect */
+// :root {
+//     --p-multiselect-background: #ffffff; /* Latar belakang */
+//     --p-multiselect-disabled-background: #f0f0f0; /* Latar belakang non-aktif */
+//     --p-multiselect-filled-background: #ffffff; /* Latar belakang terisi */
+//     --p-multiselect-filled-focus-background: #f9f9f9; /* Latar belakang terisi dan fokus */
+//     --p-multiselect-border-color: #d0d0d0; /* Warna border */
+//     --p-multiselect-hover-border-color: #b0b0b0; /* Warna border saat hover */
+//     --p-multiselect-focus-border-color: #007bff; /* Warna border saat fokus */
+//     --p-multiselect-invalid-border-color: #ff6b6b; /* Warna border saat tidak valid */
+//     --p-multiselect-color: #333333; /* Warna teks */
+//     --p-multiselect-disabled-color: #a0a0a0; /* Warna teks non-aktif */
+//     --p-multiselect-placeholder-color: #888888; /* Warna placeholder */
+//     --p-multiselect-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Bayangan */
+//     --p-multiselect-padding-x: 0.75rem; /* Padding horizontal */
+//     --p-multiselect-padding-y: 0.5rem; /* Padding vertikal */
+//     --p-multiselect-border-radius: 0.25rem; /* Radius border */
+//     --p-multiselect-focus-ring-width: 2px; /* Lebar focus ring */
+//     --p-multiselect-focus-ring-style: solid; /* Gaya focus ring */
+//     --p-multiselect-focus-ring-color: #007bff; /* Warna focus ring */
+//     --p-multiselect-focus-ring-offset: 0; /* Offset focus ring */
+//     --p-multiselect-focus-ring-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25); /* Bayangan focus ring */
+//     --p-multiselect-transition-duration: 150ms; /* Durasi transisi */
+//     --p-multiselect-dropdown-width: 3rem; /* Lebar dropdown */
+//     --p-multiselect-dropdown-color: #333333; /* Warna ikon dropdown */
+//     --p-multiselect-overlay-background: #ffffff; /* Warna overlay */
+//     --p-multiselect-overlay-border-color: #d0d0d0; /* Warna border overlay */
+//     --p-multiselect-overlay-border-radius: 0.25rem; /* Radius border overlay */
+//     --p-multiselect-overlay-color: #333333; /* Warna teks overlay */
+//     --p-multiselect-overlay-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Bayangan overlay */
+//     --p-multiselect-list-padding: 0.5rem; /* Padding daftar */
+//     --p-multiselect-list-gap: 0.5rem; /* Jarak daftar */
+//     --p-multiselect-list-header-padding: 1rem; /* Padding header daftar */
+//     --p-multiselect-option-focus-background: #e9ecef; /* Latar belakang opsi saat fokus */
+//     --p-multiselect-option-selected-background: #007bff; /* Latar belakang opsi terpilih */
+//     --p-multiselect-option-selected-focus-background: #0056b3; /* Latar belakang opsi terpilih saat fokus */
+//     --p-multiselect-option-color: #333333; /* Warna teks opsi */
+//     --p-multiselect-option-focus-color: #333333; /* Warna teks opsi saat fokus */
+//     --p-multiselect-option-selected-color: #ffffff; /* Warna teks opsi terpilih */
+//     --p-multiselect-option-selected-focus-color: #ffffff; /* Warna teks opsi terpilih saat fokus */
+//     --p-multiselect-option-padding: 0.5rem; /* Padding opsi */
+//     --p-multiselect-option-border-radius: 0.25rem; /* Radius border opsi */
+//     --p-multiselect-option-gap: 0.5rem; /* Jarak opsi */
+//     --p-multiselect-option-group-background: #f5f5f5; /* Latar belakang grup opsi */
+//     --p-multiselect-option-group-color: #333333; /* Warna teks grup opsi */
+//     --p-multiselect-option-group-font-weight: 600; /* Berat font grup opsi */
+//     --p-multiselect-option-group-padding: 0.5rem; /* Padding grup opsi */
+//     --p-multiselect-chip-border-radius: 0.25rem; /* Radius border chip */
+//     --p-multiselect-empty-message-padding: 0.5rem; /* Padding pesan kosong */
+// }
