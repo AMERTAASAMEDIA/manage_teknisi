@@ -12,17 +12,10 @@
                             <CFormInput type="text" v-model="detaildata.Tr_task_kode" readonly />
                         </div>
                         <div class="mb-3">
-                            <CFormLabel>Pegawai List Penanganan</CFormLabel>
-                            <Multiselect
-                                v-model="selectedPegawai"
-                                :options="filteredPegawaiOptions"
-                                :label="'master_pengguna_nama'"
-                                :track-by="'master_pengguna_id'"
-                                placeholder="Pilih pegawai"
-                                :multiple="true"
-                                :taggable="true"
-                                @tag="addTag"
-                            />
+                            <CFormLabel>Pegawai List Penanganan</CFormLabel><br>
+                            <MultiSelect v-model="selectedPegawai" :options="pegawaiOptions"
+                                optionLabel="master_pengguna_nama" filter placeholder="Pilih pegawai"
+                                class="w-full md:w-80" />
                             <br>
                         </div>
                         <CButton color="primary" @click.prevent="PengerjaanDetailData">Konfirmasi</CButton> &nbsp;

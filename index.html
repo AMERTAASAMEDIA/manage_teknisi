@@ -37,9 +37,9 @@
     <meta name="theme-color" content="#ffffff">
     <script>
         const userMode = localStorage.getItem('coreui-free-vue-admin-template-theme');
-        const systemDarkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const systemDarkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches;
         if (userMode === 'dark' || (userMode !== 'light' && systemDarkMode)) {
-            document.documentElement.dataset.coreuiTheme = 'dark';
+            document.documentElement.dataset.coreuiTheme = 'light';
         }
     </script>
 </head>

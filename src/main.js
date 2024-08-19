@@ -12,13 +12,16 @@ import DocsExample from '@/components/DocsExample'
 // Plugin Tampilan 
 import VueSweetalert2 from 'vue-sweetalert2'
 import 'sweetalert2/dist/sweetalert2.min.css';
+
+import Aura from '@primevue/themes/aura';
+
+import PrimeVue from 'primevue/config';
+
+
 // import VueCurrencyFilter from 'vue-currency-filter'
 // Unused 
 // import JwPagination from 'jw-vue-pagination';
 // import Table from 'data-table-vue-v3';
-import '@/styles/tailwind.css';
-import "preline/preline";
-// option for input 
 
 const app = createApp(App)
 app.use(createPinia())
@@ -29,6 +32,13 @@ app.component('CIcon', CIcon)
 app.component('DocsExample', DocsExample)
     // Plugin Tampilan 
 app.use(VueSweetalert2)
+app.use(PrimeVue, 
+    {
+    theme: {
+        preset: Aura,
+        colorScheme: 'light',
+    }}
+)
 
 
 app.use(store).mount('#app')

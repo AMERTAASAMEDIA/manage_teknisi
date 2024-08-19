@@ -1,21 +1,16 @@
 import Axios from "axios";
 import allSource_koordinator from "../../../../../all.source_koordinator";
-import Multiselect from 'vue-multiselect';
+import MultiSelect from 'primevue/multiselect';
 import Swal from 'sweetalert2';
 
 export default {
-    components: { Multiselect },
+    components: { MultiSelect },
     data() {
         return {
-            Visibletambahdata: false,
             data_item: "Data Tiket",
-            list_item: [],
-            cari: '',
-            current: 1,
-            pageSize: 10,
             detaildata: {},
             pegawaiOptions: [],
-            selectedPegawai: []
+            selectedPegawai: [] // Array ini berisi objek pegawai
         };
     },
     computed: {
@@ -32,15 +27,19 @@ export default {
         getDetailData() {
             Axios.get(allSource_koordinator.getDetailTicket + this.$route.params.id)
                 .then((response) => {
-                    console.log("Detail Data from server:", response.data);
                     this.detaildata = response.data;
+                    this.detaildata.Tr_task_kode = this.detaildata.Tr_task_kode || ''; // Pastikan ada nilai default
+
                     // Pastikan Tr_task_pegawai_list_penanganan selalu berupa array
                     if (!Array.isArray(this.detaildata.Tr_task_pegawai_list_penanganan)) {
                         this.detaildata.Tr_task_pegawai_list_penanganan = [];
                     }
-                    this.selectedPegawai = this.detaildata.Tr_task_pegawai_list_penanganan.map(nama => 
-                        this.pegawaiOptions.find(pegawai => pegawai.master_pengguna_nama === nama)
+
+                    // Map data untuk multiselect dengan menggunakan nama
+                    this.selectedPegawai = this.pegawaiOptions.filter(pegawai =>
+                        this.detaildata.Tr_task_pegawai_list_penanganan.includes(pegawai.master_pengguna_nama)
                     );
+
                     console.log("Selected Pegawai after fetching detail data:", this.selectedPegawai);
                 })
                 .catch((error) => {
@@ -55,16 +54,16 @@ export default {
                         master_pengguna_id: pegawai.master_pengguna_id,
                         master_pengguna_nama: pegawai.master_pengguna_nama
                     }));
+                    this.getDetailData(); // Mengambil data detail setelah pegawaiOptions diisi
                 })
                 .catch((error) => {
                     console.error("Error fetching pegawai list:", error);
                 });
         },
         UpdateDetailData() {
-            // console.log(this.detaildata)
             this.$swal.fire({
                 title: "Simpan perubahan?",
-                text: "Apakah anda yakin menyimpan perubahan ?",
+                text: "Apakah anda yakin menyimpan perubahan?",
                 icon: "warning",
                 showCancelButton: true,
                 confirmButtonColor: "#3085d6",
@@ -88,7 +87,6 @@ export default {
                         })
                     })
             })
-
         },
         PengerjaanDetailData() {
             this.detaildata.Tr_task_status = "P";
@@ -106,7 +104,8 @@ export default {
                     console.log("Selected Pegawai:", this.selectedPegawai);
                     console.log("Detail Data:", this.detaildata);
                     
-                    this.detaildata.Tr_task_pegawai_list_penanganan = this.selectedPegawai.map(pegawai => pegawai.master_pengguna_nama);
+                    // Menggunakan nama pegawai untuk dikirim ke server
+                    this.detaildata.Tr_task_pegawai_list_penanganan = this.selectedPegawai.map(pegawai => pegawai.master_pengguna_nama); 
                     console.log("Detail Data after mapping:", this.detaildata);
                     
                     Axios.put(allSource_koordinator.updateDataTicket + this.$route.params.id, this.detaildata)
@@ -134,6 +133,5 @@ export default {
     },
     created() {
         this.getPegawaiList();
-        this.getDetailData();
     }
 };
